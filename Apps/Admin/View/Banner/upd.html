@@ -1,0 +1,106 @@
+<extend name="Public/common"/>
+
+
+
+<block name="body">
+
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> banner管理 <span class="c-gray en">&gt;</span> 修改banner <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
+
+<article class="page-container">
+  <form action="{:U('Banner/upting')}" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data"  onsubmit="return check()">
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">banner名称：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="{$binfo.remarks}" placeholder="" name="remarks">
+      </div>
+    </div>
+    <label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>图片(1920*800)：</label>
+    <div class="main-upload">
+          <div class="main-img">
+            <input class="input" type="file" name="blogo" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
+            <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
+            <img id="preview2" src="{$binfo.blogo}" style="display: block; width: 100%"></div>
+        </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">链接地址：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="{$binfo.url}" placeholder=""  name="url" id="url">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">排序：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="{$binfo.sort}" placeholder=""  name="sort" style="width: 40px; text-align: center;" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="4">
+      </div>
+    </div>
+     <input type="hidden" name="bid" value="{$binfo.id}">
+    <div class="row cl">
+      <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">&nbsp;&nbsp;&nbsp;
+        <input class="btn btn-primary radius" onclick="history.go(-1)" value="返回" type="button">
+      </div>
+    </div>
+  </form>
+</article>
+<style type="text/css">
+.main-upload {
+    margin: 20px;
+    position: relative;
+    width: 360px;
+    margin-left: 26%;
+    background: #FFF;
+    border: 1px solid #ddd;
+    margin-bottom: 40px
+}
+.main-img {
+    width: 360px;
+    height: 125px;
+    margin: 0 auto;
+}
+#a2{
+    display: block;
+    width: 360px;
+    height: 20px;
+    position: absolute;
+    bottom: -20px;
+    background: #5a98de;
+    text-align: center;
+    color: #000;
+    line-height: 20px;
+    z-index: 999;
+}
+#a2 i{
+    color: #fff;
+}
+#a2:hover{
+  background: #0a6999;
+}
+</style>
+<script>
+function setImagePreview() {
+  var docObj2=document.getElementById("doc2");
+  var imgObjPreview2=document.getElementById("preview2");
+  if(docObj2.files &&    docObj2.files[0]){
+  //火狐下，直接设img属性
+  imgObjPreview2.style.display = 'block';
+  imgObjPreview2.style.width="100%";
+  imgObjPreview2.style.height="100%"; 
+  imgObjPreview2.src = window.URL.createObjectURL(docObj2.files[0]);
+  }
+  return true;
+}
+function check(){
+  if($('#preview2').attr('src') == undefined){
+    alert('请选择图片！');
+    return false;
+  }
+  return true;
+}
+</script>
+<script type="text/javascript" src="__LIB__/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__LIB__/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__AJS__/H-ui.js"></script> 
+<script type="text/javascript" src="__AJS__/H-ui.admin.js"></script> 
+</block>

@@ -1,0 +1,54 @@
+<extend name="Public/common"/>
+
+
+
+<block name="body">
+
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员设置 <span class="c-gray en">&gt;</span> 管理员新增 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
+
+<article class="page-container">
+	<form action="{:U('Manager/add')}" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
+			<div class="formControls col-xs-5 col-sm-6">
+				<input type="text" class="input-text radius" value="" placeholder="" id="username" name="username">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
+			<div class="formControls col-xs-5 col-sm-6">
+				<input type="text" class="input-text radius" value="" placeholder="" id="password" name="password">
+			</div>
+		</div>
+ 
+
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">备注：</label>
+			<div class="formControls col-xs-5 col-sm-6">
+				<input type="text" class="input-text radius" value="" placeholder="" id="memo" name="memo">
+			</div>
+		</div>
+
+		
+
+
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+</article>
+
+
+
+
+<script type="text/javascript" src="__LIB__/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__LIB__/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__AJS__/H-ui.js"></script> 
+<script type="text/javascript" src="__AJS__/H-ui.admin.js"></script> 
+</block>

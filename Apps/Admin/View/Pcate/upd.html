@@ -1,0 +1,52 @@
+<extend name="Public/common"/>
+
+
+
+<block name="body">
+
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 修改分类 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
+
+<article class="page-container">
+	<form action="{:U('Pcate/upting')}" method="post" class="form form-horizontal" enctype="multipart/form-data"  onsubmit="return check()">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类名称：</label>
+			<div class="formControls col-xs-5 col-sm-6">
+				<input type="text" class="input-text radius" value="{$cateinfo.cname}" placeholder="" id="cname" name="cname">
+			</div>
+		</div>
+    <div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>排序：</label>
+			<div class="formControls col-xs-5 col-sm-6">
+				<input type="text" class="input-text radius" value="{$cateinfo.sort}" placeholder=""  name="sort" style="width: 40px; text-align: center;" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="4" id="sort">
+			</div>
+		</div>
+    <input type="hidden" name="cid" value="{$cateinfo.id}">
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">&nbsp;&nbsp;&nbsp;
+				<input class="btn btn-primary radius" onclick="history.go(-1)" value="返回" type="button">
+			</div>
+		</div>
+	</form>
+</article>
+<script>
+function check(){
+	if($('#cname').val() == ''){
+		alert('类名不能为空！');
+		$('#cname').focus();
+		return false;
+	}
+  if($('#sort').val() == ''){
+    alert('排序不能为空！');
+    $('#sort').focus();
+    return false
+  }
+	return true;
+}
+</script>
+<script type="text/javascript" src="__LIB__/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__LIB__/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="__AJS__/H-ui.js"></script> 
+<script type="text/javascript" src="__AJS__/H-ui.admin.js"></script> 
+</block>
