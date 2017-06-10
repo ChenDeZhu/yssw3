@@ -53,6 +53,8 @@ class InformationController extends BaseController{
 		}else if($type == 5){
 			$name="转让";
 		}
+		$clist = M('cate')->where(array('type'=>$type))->select();
+		$this->assign('clist',$clist);
 		$this->assign('type',$type);
 		$this->assign('name',$name);
 		$this->display();
@@ -61,6 +63,7 @@ class InformationController extends BaseController{
 	public function insert(){
 		$M = M('information');
 		$data = I('post.');
+		$data['content'] = htmlspecialchars_decode($data['editorValue']);
 		$data['addtime'] = time();
 		$data['updatetime'] = $data['addtime'];
 
@@ -73,23 +76,22 @@ class InformationController extends BaseController{
 	                $uniqu = $data['type'].'_'.$res;
 	                $slogoPath = $this->thumpic( $info['img'], '200', '200', $uniqu);
 	                $M->where('id='.$res)->save(['img'=>ltrim($slogoPath, '.')]);       
-	            }
-		    }else{
+	            }else{
 		        	$M->delete($res);
 		        	$this->error('添加失败！请重新添加！',U('information/index',array('type'=>$data['type'])));	
 		        }
-		        $this->success('添加成功！',U('information/index',array('type'=>$data['type'])));
+		  		}else{
+		  			$this->success('添加成功！',U('information/index',array('type'=>$data['type'])));
+		  		}
         }else{
         	$this->error('添加失败！请重新添加！',U('information/index',array('type'=>$data['type'])));
         }
 	}
-
 	//显示编辑页面
     public function upd(){
     	$this->isLogin();
 		$info = M('information')->where('id='.I('get.id'))->find();
 		$type = $info['type'];
-		$type = I('get.type');
 		if($type == 0){
 			$name = "招聘";
 		}else if($type == 1){
@@ -103,9 +105,33 @@ class InformationController extends BaseController{
 		}else if($type == 5){
 			$name="转让";
 		}
+
 		$this->assign('type',$type);
+		$this->assign('name',$name);
 		$this->assign('info',$info);
 		$this->display();
+    }
+    //编辑逻辑
+    public function update(){
+    	$data          = I('post.');
+		$data['updatetime'] = time();
+		$data['content'] = htmlspecialchars_decode($data['editorValue']);
+		$res           = M('information')->where('id='.$data['id'])->save($data);
+		if($res){
+			if(!empty($_FILES['img']['tmp_name'])){
+				$info = $this->uploadfile($_FILES);
+	            if(!empty($info)){
+	                //处理logo
+	                $uniqu = $data['type'].'_'.$data['sid'];
+	                $slogoPath = $this->thumpic( $info['img'], '200', '200', $uniqu);
+	            }
+            	$this->success('修改成功！',U('information/index',array('type'=>$data['type'])));
+       		}else{
+       			$this->success('修改成功！',U('information/index',array('type'=>$data['type'])));	
+       		}
+		}else{
+			$this->error('系统错误！',U('information/index',array('type'=>$data['type'])));	
+		}
     }
 
 

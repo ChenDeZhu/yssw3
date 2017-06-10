@@ -46,6 +46,17 @@
                 </span>
             </div>
         </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属栏目：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <span class="select-box">
+                  <select class="select" size="1" name="cid" id="cid">
+                    <option value="">--请选择栏目--</option>
+                    <?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v['cid']); ?>"><?php echo ($v['name']); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                  </select>
+                </span>
+            </div>
+        </div>
         <input type="hidden" name="type" value="<?php echo ($type); ?>">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span><?php echo ($name); ?>标题：</label>
@@ -53,7 +64,7 @@
 				<input type="text" class="input-text radius" value="" placeholder="" name="title" id="title">
 			</div>
 		</div>
-        
+        <div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>图片：</label>
 		<div class="main-upload">
           <div class="main-img">
@@ -61,6 +72,25 @@
             <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
             <img id="preview2"> </div>
         </div>
+
+        </div>
+        <div class="row cl">
+          <label class="form-label col-xs-4 col-sm-3">是否推荐：</label>
+          <div class="formControls col-xs-5 col-sm-6">
+                 <div class="radio-box">
+                    <input type="radio" id="radio-1" name="demo-radio1">
+                    <label for="radio-1">是 </label>
+                  </div>
+                <div class="radio-box">
+                    <input type="radio" id="radio-2" name="demo-radio1" checked>
+                    <label for="radio-2">否</label>
+                </div>
+          </div>
+        </div>
+
+
+
+
         <div class="row cl">
           <label class="form-label col-xs-4 col-sm-3">详细内容：</label>
           <div class="formControls col-xs-5 col-sm-6">
@@ -124,29 +154,18 @@ function setImagePreview() {
   return true;
 }
 function check(){
-  if($('#pid').val() == ''){
-    alert('请选择所属分类！');
-    return false;
-  }
+  
   if($('#title').val() == ''){
-    alert('标题不能为空！');
+    layer.msg('标题不能为空！');
     $('#title').focus();
     return false;
   }
   if(UE.getEditor('editor').getContent() == ''){
-    alert('内容不能为空！');
+    layer.msg('内容不能为空！');
     UE.getEditor('editor').isFocus();
     return false;
   }
-  if(document.getElementById("preview2").style.display !== 'block'){
-        alert("图片不能为空!");
-        return false;
-  }
-  if($('#url').val() == ''){
-    alert('链接地址不能为空！');
-    
-    return false;
-  }
+  
 	return true;
 }
 </script>

@@ -50,7 +50,7 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 新闻管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a _href="<?php echo U('News/index');?>" data-title="新闻列表" href="javascript:void(0)">新闻列表</a></li>
+					<!-- <li><a _href="<?php echo U('News/index');?>" data-title="新闻列表" href="javascript:void(0)">新闻列表</a></li> -->
 					<li><a _href="<?php echo U('Cate/index');?>" data-title="新闻分类" href="javascript:void(0)">新闻分类</a></li>
 				</ul>
 			</dd>
