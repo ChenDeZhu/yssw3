@@ -25,20 +25,44 @@
 	 
 
 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 新闻管理 <span class="c-gray en">&gt;</span> 添加分类 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 添加<?php echo ($name); ?>栏目 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 
 <article class="page-container">
 	<form action="<?php echo U('Cate/insert');?>" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data"  onsubmit="return check()">
+		<input type='hidden' name='type' value="<?php echo ($type); ?>">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>上级栏目：</label>
+			<div class="formControls col-xs-5 col-sm-6">
+                <span class="select-box">
+                  <select class="select" size="1" name="pid" >
+                    <option value="0">顶级栏目</option>
+                    	<?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo['cid']); ?>">
+                        |
+                        <?php $__FOR_START_7334__=0;$__FOR_END_7334__=$vo['Count'];for($i=$__FOR_START_7334__;$i < $__FOR_END_7334__;$i+=1){ ?>--<?php } ?>
+ 						<?php echo ($vo['name']); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                  </select>
+                </span>
+            </div>
+		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类名称：</label>
 			<div class="formControls col-xs-5 col-sm-6">
-				<input type="text" class="input-text radius" value="" placeholder="" id="cname" name="cname">
+				<input type="text" class="input-text radius" value="" placeholder="" id="name" name="name">
 			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>栏目图片：</label>
+			<div class="main-upload">
+	          <div class="main-img">
+	            <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
+	            <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
+	            <img id="preview2"> </div>
+	        </div>
 		</div>
     <div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>排序：</label>
 			<div class="formControls col-xs-5 col-sm-6">
-				<input type="text" class="input-text radius" value="" placeholder=""  name="sort" style="width: 40px" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="4">
+				<input type="text" class="input-text radius" value="0" placeholder=""  name="sort" style="width: 40px" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="4">
 			</div>
 		</div>
 		<div class="row cl">
@@ -49,18 +73,62 @@
 		</div>
 	</form>
 </article>
+<style type="text/css">
+.main-upload {
+    margin: 20px;
+    position: relative;
+    width: 150px;
+    margin-left: 26%;
+    background: #FFF;
+    border: 1px solid #ddd;
+    margin-bottom: 40px
+}
+.main-img {
+    width: 150px;
+    height: 100px;
+    margin: 0 auto;
+}
+#a2{
+    display: block;
+    width: 150px;
+    height: 20px;
+    position: absolute;
+    bottom: -20px;
+    background: #5a98de;
+    text-align: center;
+    color: #000;
+    line-height: 20px;
+    z-index: 999;
+}
+#a2 i{
+    color: #fff;
+}
+#a2:hover{
+  background: #0a6999;
+}
+</style>
+<script>
+function setImagePreview() {
+  var docObj2=document.getElementById("doc2");
+  var imgObjPreview2=document.getElementById("preview2");
+  if(docObj2.files &&    docObj2.files[0]){
+  //火狐下，直接设img属性
+  imgObjPreview2.style.display = 'block';
+  imgObjPreview2.style.width="100%";
+  imgObjPreview2.style.height="100%"; 
+  imgObjPreview2.src = window.URL.createObjectURL(docObj2.files[0]);
+  }
+  return true;
+}
+</script>
 <script type="text/javascript">
 function check(){
-	if($('#cname').val() == ''){
-		alert('分类名不能为空！');
-		$('#cname').focus();
+	if($('#name').val() == ''){
+		layer.msg('分类名不能为空！');
+		$('#name').focus();
 		return false;
 	}
-  if($('#sort').val() == ''){
-    alert('排序不能为空！');
-    $('#sort').focus();
-    return false
-  }
+  
 	return true;
 }
 </script>

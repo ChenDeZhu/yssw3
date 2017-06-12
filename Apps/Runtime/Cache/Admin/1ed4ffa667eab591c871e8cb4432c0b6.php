@@ -25,121 +25,122 @@
 	 
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/ueditor.parse.js"></script>
 <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/lang/zh-cn/zh-cn.js"></script>
 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 修改<?php echo ($name); ?> <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
-
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 网站设置<span class="c-gray en">&gt;</span> 公司信息 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 <article class="page-container">
-	<form action="<?php echo U('Information/update');?>" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data"  onsubmit="return check()">
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属用户：</label>
-            <div class="formControls col-xs-5 col-sm-6">
-                <span class="select-box">
-                  <select class="select" size="1" name="uid" id="uid">
-                    <option value="">--请选择用户--</option>
-                    
-                        <option value="1" <?php if(1 == $info['uid']): ?>selected<?php endif; ?>>我是第一个用户</option>
-                    
-                  </select>
-                </span>
-            </div>
-        </div>
-        <input type="hidden" name="type" value="<?php echo ($type); ?>">
-        <input type="hidden" name="id" value="<?php echo ($info["id"]); ?>">
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span><?php echo ($name); ?>标题：</label>
-			<div class="formControls col-xs-5 col-sm-6">
-				<input type="text" class="input-text radius" value="<?php echo ($info["title"]); ?>" placeholder="" name="title" id="title">
-			</div>
-		</div>
-         <div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>图片：</label>
-		<div class="main-upload">
-          <div class="main-img">
-            <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
-            <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
-            <img id="preview2" src="<?php echo ($info["img"]); ?>"  style="display: block; width: 100%"> </div>
-        </div>
-        </div>
-        <div class="row cl">
-          <label class="form-label col-xs-4 col-sm-3">详细内容：</label>
-          <div class="formControls col-xs-5 col-sm-6">
-            <script id="editor" type="text/plain" style="width:800px;height:400px;"><?php echo ($info["content"]); ?></script>
-          </div>
-        </div>
-		</div>
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<input class="btn btn-primary radius" type="submit" name="submit" value="保存后关闭">&nbsp;&nbsp;&nbsp;
-        <input class="btn btn-primary radius" type="submit" name="tsubmit" value="继续发表">&nbsp;&nbsp;&nbsp;
-				<input class="btn btn-primary radius" onclick="history.go(-1)" value="返回" type="button">
-			</div>
-		</div>
-	</form>
+  <form action="<?php echo U('Website/pupt');?>" method="post" class="form form-horizontal" id="form-member-add" onsubmit="return check()">
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>公司名称：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["company"]); ?>" name="company" id="company">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系人：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["contacts"]); ?>" name="contacts" id="contacts">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系电话：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["phone"]); ?>" name="phone" id="phone" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["emil"]); ?>" name="emil" id="emil">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>QQ：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["qq"]); ?>" name="qq" id="qq" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>公司地址：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <textarea class="textarea-text radius" name="address" id="address" rows="4" style="width: 40%; border-color: #ddd; font-size: 14px"><?php echo ($pro["address"]); ?></textarea> 
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>公司描述（100字以内）：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <textarea class="textarea-text radius" name="describe" id="describe" rows="4" style="width: 40%; border-color: #ddd;font-size: 14px"><?php echo ($pro["describe"]); ?></textarea> 
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>SEO关键字：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <textarea class="textarea-text radius" name="keywords" id="keywords" rows="4" style="width: 40%; border-color: #ddd;font-size: 14px"><?php echo ($pro["keywords"]); ?></textarea> 
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>公司介绍：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <script id="editor" type="text/plain" style="width:800px;height:400px;"><?php echo ($pro["profiles"]); ?></script>
+      </div>
+    </div>
+      <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3" style="margin-top:20px; margin-bottom: 20px;">
+        <input class="btn btn-primary radius" type="submit" value="确认修改">
+      </div>
+    </div>
+  </form>
 </article>
-<style type="text/css">
-.main-upload {
-    margin: 20px;
-    position: relative;
-    width: 150px;
-    margin-left: 26%;
-    background: #FFF;
-    border: 1px solid #ddd;
-    margin-bottom: 40px
-}
-.main-img {
-    width: 150px;
-    height: 100px;
-    margin: 0 auto;
-}
-#a2{
-    display: block;
-    width: 150px;
-    height: 20px;
-    position: absolute;
-    bottom: -20px;
-    background: #5a98de;
-    text-align: center;
-    color: #000;
-    line-height: 20px;
-    z-index: 999;
-}
-#a2 i{
-    color: #fff;
-}
-#a2:hover{
-  background: #0a6999;
-}
-</style>
-<script>
-function setImagePreview() {
-  var docObj2=document.getElementById("doc2");
-  var imgObjPreview2=document.getElementById("preview2");
-  if(docObj2.files &&    docObj2.files[0]){
-  //火狐下，直接设img属性
-  imgObjPreview2.style.display = 'block';
-  imgObjPreview2.style.width="100%";
-  imgObjPreview2.style.height="100%"; 
-  imgObjPreview2.src = window.URL.createObjectURL(docObj2.files[0]);
-  }
-  return true;
-}
+<script type="text/javascript">
 function check(){
-  
-  if($('#title').val() == ''){
-    layer.msg('标题不能为空！');
-    $('#title').focus();
-    return false;
-  }
-  if(UE.getEditor('editor').getContent() == ''){
-    layer.msg('内容不能为空！');
-    UE.getEditor('editor').isFocus();
-    return false;
-  }
- 
-  
-	return true;
+    if($('#company').val() == ''){
+       alert('请填写公司名称！');
+       $('#company').focus();
+       return false; 
+    }
+    if($('#contacts').val() == ''){
+       alert('请填写联系人！');
+       $('#contacts').focus();
+       return false; 
+    }
+    if($('#phone').val() == ''){
+       alert('请填写联系电话！');
+       $('#phone').focus();
+       return false; 
+    }
+    if($('#emil').val() == ''){
+       alert('请填写emil！');
+       $('#emil').focus();
+       return false; 
+    }
+    if($('#qq').val() == ''){
+       alert('请填写qq！');
+       $('#qq').focus();
+       return false; 
+    }
+    if($('#address').val() == ''){
+       alert('请填写公司地址！');
+       $('#address').focus();
+       return false; 
+    }
+    if($('#keywords').val() == ''){
+       alert('请填写SEO关键字！');
+       $('#keywords').focus();
+       return false; 
+    }
+    if($('#keywords').val() == ''){
+       alert('请填写SEO关键字！');
+       $('#keywords').focus();
+       return false; 
+    }
+    if(UE.getEditor('editor').getContent() == ''){
+        alert('简介不能为空！');
+        UE.getEditor('editor').isFocus();
+        return false;
+    }
+    return true;
 }
 </script>
 <script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
@@ -147,7 +148,6 @@ function check(){
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.admin.js"></script> 
 <script type="text/javascript">
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');
@@ -256,6 +256,7 @@ function check(){
         UE.getEditor('editor').execCommand( "clearlocaldata" );
         alert("已清空草稿箱")
     }
+
 </script>
 
 

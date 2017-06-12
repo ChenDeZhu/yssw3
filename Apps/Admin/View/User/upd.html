@@ -5,51 +5,60 @@
 <block name="body">
 
 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 编辑{$name}栏目 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户管理 <span class="c-gray en">&gt;</span>编辑用户 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 
 <article class="page-container">
-	<form action="{:U('Cate/update')}" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data"  onsubmit="return check()">
-		<input type='hidden' name='type' value="{$type}">
-		<input type='hidden' name='cid' value="{$info.cid}">
+	<form action="{:U('User/update')}" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data"  onsubmit="return check()">
+		
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>上级栏目：</label>
-			<div class="formControls col-xs-5 col-sm-6">
-                <span class="select-box">
-                  <select class="select" size="1" name="pid" >
-                    <option value="0">顶级栏目</option>
-                    	<volist name='clist' id='vo'>
-                        <option value="{$vo['cid']}" <if condition="$vo['cid'] eq $info['pid']">selected</if>>
-                        |
-                        <for start="0" end="$vo['Count']">
-                        --
- 						</for>
- 						{$vo['name']}</option>
-                    	</volist>
-                  </select>
-                </span>
-            </div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类名称：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户昵称：</label>
 			<div class="formControls col-xs-5 col-sm-6">
 				<input type="text" class="input-text radius" value="{$info.name}" placeholder="" id="name" name="name">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>栏目图片：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户头像：</label>
 			<div class="main-upload">
 	          <div class="main-img">
 	            <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
 	            <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
-	            <img id="preview2" src="{$info.img}"  style="display: block; width: 100%"> </div>
+	            <img id="preview2" scr="{$info.img}"> </div>
 	        </div>
 		</div>
     <div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>排序：</label>
-			<div class="formControls col-xs-5 col-sm-6">
-				<input type="text" class="input-text radius" value="{$info.sort}" placeholder=""  name="sort" style="width: 40px" onkeyup="value=value.replace(/[^\d.]/g,'')" maxlength="4">
-			</div>
-		</div>
+          <label class="form-label col-xs-4 col-sm-3">性别：</label>
+          <div class="formControls col-xs-5 col-sm-6">
+                 <div class="radio-box">
+                    <input type="radio" id="radio-1" name="sex" value="0"  <if condition="0 eq $info['sex']"> checked</if>>
+                    <label for="radio-1">男 </label>
+                  </div>
+                <div class="radio-box">
+                    <input type="radio" id="radio-2" name="sex" value="1" <if condition="1 eq $info['sex']"> checked</if>>
+                    <label for="radio-2">女</label>
+                </div>
+          </div>
+      </div>
+
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"></span>微信：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" placeholder=""  name="wechat" value="{$info.wechat}">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"></span>QQ：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" placeholder=""  name="qq"  value="{$info.qq}">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"></span>地址：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" placeholder=""  name="address" value="{$info.address}">
+      </div>
+    </div>
+    
+    <input type="hidden" name="uid" value="{$info.uid}">
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">&nbsp;&nbsp;&nbsp;
@@ -109,11 +118,11 @@ function setImagePreview() {
 <script type="text/javascript">
 function check(){
 	if($('#name').val() == ''){
-		layer.msg('栏目名不能为空！');
+		layer.msg('分类名不能为空！');
 		$('#name').focus();
 		return false;
 	}
- 
+  
 	return true;
 }
 </script>

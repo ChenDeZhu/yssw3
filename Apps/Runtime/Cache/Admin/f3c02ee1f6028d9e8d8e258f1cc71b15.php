@@ -29,50 +29,68 @@
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/lang/zh-cn/zh-cn.js"></script>
 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 修改<?php echo ($name); ?> <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 企业管理 <span class="c-gray en">&gt;</span>添加企业 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 
 <article class="page-container">
-	<form action="<?php echo U('Information/update');?>" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data"  onsubmit="return check()">
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属用户：</label>
-            <div class="formControls col-xs-5 col-sm-6">
-                <span class="select-box">
-                  <select class="select" size="1" name="uid" id="uid">
-                    <option value="">--请选择用户--</option>
-                    
-                        <option value="1" <?php if(1 == $info['uid']): ?>selected<?php endif; ?>>我是第一个用户</option>
-                    
-                  </select>
-                </span>
-            </div>
-        </div>
-        <input type="hidden" name="type" value="<?php echo ($type); ?>">
-        <input type="hidden" name="id" value="<?php echo ($info["id"]); ?>">
+	<form action="<?php echo U('Company/insert');?>" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data"  onsubmit="return check()">
+  <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>企业LOGO：</label>
+      <div class="main-upload">
+            <div class="main-img">
+              <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
+              <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
+              <img id="preview2"> </div>
+          </div>
+    </div>
+		
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span><?php echo ($name); ?>标题：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>企业名称：</label>
 			<div class="formControls col-xs-5 col-sm-6">
-				<input type="text" class="input-text radius" value="<?php echo ($info["title"]); ?>" placeholder="" name="title" id="title">
+				<input type="text" class="input-text radius" value="" placeholder="" id="name" name="name">
 			</div>
 		</div>
-         <div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>图片：</label>
-		<div class="main-upload">
-          <div class="main-img">
-            <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
-            <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
-            <img id="preview2" src="<?php echo ($info["img"]); ?>"  style="display: block; width: 100%"> </div>
-        </div>
-        </div>
-        <div class="row cl">
-          <label class="form-label col-xs-4 col-sm-3">详细内容：</label>
+		
+  <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">电话：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="" placeholder="" id="tel" name="tel">
+      </div>
+    </div>
+  <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">传真：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="" placeholder="" id="fax" name="fax">
+      </div>
+    </div>
+  <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3">地址：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="" placeholder="" id="address" name="address">
+      </div>
+    </div>
+    <div class="row cl">
+          <label class="form-label col-xs-4 col-sm-3">推荐：</label>
           <div class="formControls col-xs-5 col-sm-6">
-            <script id="editor" type="text/plain" style="width:800px;height:400px;"><?php echo ($info["content"]); ?></script>
+                 <div class="radio-box">
+                    <input type="radio" id="radio-1" name="recommend" value="0"  checked>
+                    <label for="radio-1">是 </label>
+                  </div>
+                <div class="radio-box">
+                    <input type="radio" id="radio-2" name="recommend" value="1">
+                    <label for="radio-2">否</label>
+                </div>
           </div>
-        </div>
-		</div>
+      </div>
+    <div class="row cl">
+          <label class="form-label col-xs-4 col-sm-3">详细介绍：</label>
+          <div class="formControls col-xs-5 col-sm-6">
+            <script id="editor" type="text/plain" style="width:800px;height:400px;"></script>
+          </div>
+    </div>
+    
+		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<input class="btn btn-primary radius" type="submit" name="submit" value="保存后关闭">&nbsp;&nbsp;&nbsp;
-        <input class="btn btn-primary radius" type="submit" name="tsubmit" value="继续发表">&nbsp;&nbsp;&nbsp;
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">&nbsp;&nbsp;&nbsp;
 				<input class="btn btn-primary radius" onclick="history.go(-1)" value="返回" type="button">
 			</div>
 		</div>
@@ -125,19 +143,14 @@ function setImagePreview() {
   }
   return true;
 }
+</script>
+<script type="text/javascript">
 function check(){
-  
-  if($('#title').val() == ''){
-    layer.msg('标题不能为空！');
-    $('#title').focus();
-    return false;
-  }
-  if(UE.getEditor('editor').getContent() == ''){
-    layer.msg('内容不能为空！');
-    UE.getEditor('editor').isFocus();
-    return false;
-  }
- 
+	if($('#name').val() == ''){
+		layer.msg('分类名不能为空！');
+		$('#name').focus();
+		return false;
+	}
   
 	return true;
 }
@@ -145,7 +158,7 @@ function check(){
 <script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Lib/layer/2.1/layer.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.js"></script> 
-<script type="text/javascript" src="/Public/Admin/Js/H-ui.admin.js"></script> 
+<script type="text/javascript" src="/Public/Admin/Js/H-ui.admin.js"></script>
 <script type="text/javascript">
 
     //实例化编辑器

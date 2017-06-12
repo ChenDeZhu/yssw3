@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
@@ -6,10 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link href="__ACSS__/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="__ACSS__/H-ui.login.css" rel="stylesheet" type="text/css" />
-<link href="__ACSS__/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="__LIB__/iconfonts/1.0.7/iconfont.css" />
+<link href="/yssw3/Public/Admin/Css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="/yssw3/Public/Admin/Css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="/yssw3/Public/Admin/Css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Lib/iconfonts/1.0.7/iconfont.css" />
 <title>台州银刷商务服务有限公司管理平台</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <input class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码:'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;" name="Verify" id="Verify">
-          <img src="{:U('Index/VerifyShow')}" onclick="this.src='{:U('Index/VerifyShow')}';" title="看不清图片可以单击换一换">  </div>
+          <img src="<?php echo U('Index/VerifyShow');?>" onclick="this.src='<?php echo U('Index/VerifyShow');?>';" title="看不清图片可以单击换一换">  </div>
       </div>
  
       <div class="row cl">
@@ -45,9 +45,9 @@
     </form>
   </div>
 </div>
-<div class="footer">Copyright {:F('profiles')['company']} All Rights Reserved.</div>
-<script type="text/javascript" src="__LIB__/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="__AJS__/H-ui.js"></script> 
+<div class="footer">Copyright <?php echo F('profiles')['company'];?> All Rights Reserved.</div>
+<script type="text/javascript" src="/yssw3/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/yssw3/Public/Admin/Js/H-ui.js"></script> 
 <script type="text/javascript">
   function login(){
       var url = window.location.href;

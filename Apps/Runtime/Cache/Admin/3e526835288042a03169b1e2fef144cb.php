@@ -23,34 +23,46 @@
 </head>
 <body>
 	 
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span><?php echo ($name); ?>栏目 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户管理 <span class="c-gray en">&gt;</span> 用户列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="<?php echo U('Cate/add',array('type'=>$type));?>"  class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加栏目</a></span> <span class="r">共有数据：<strong><?php echo ($count); ?></strong> 条</span> </div>
-
+	<div class="text-c">
+	  <form action="<?php echo U('Company/index');?>" method="post" onsubmit="return checkword()">
+		<input type="text" class="input-text" style="width:250px" placeholder="输入关键字" id="key" name="key">
+		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜新闻</button>
+	  </form>
+	</div>
+	<script type="text/javascript">
+		function checkword(){
+			if($('#key').val() == ''){
+				alert('请输入关键字！');
+				$('#key').focus();
+				return false;
+			}
+			return true;
+		}
+	</script>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="<?php echo U('Company/add');?>"  class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加企业</a></span> <span class="r">共有数据：<strong><?php echo ($count); ?></strong> 条</span> </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg">
 		<thead>
 			<tr class="text-c">
-				<th width="20">排序</th>
-				<th width="20">栏目图</th>
-				<th width="20">栏目等级</th>
+				
+				<th width="30">企业id</th>
+				<th width="60">logo</th>
 				<th width="60">名称</th>
-				<th width="60">更新时间</th>
-				<th width="60">操作</th>
+				<th width="60">地址</th>
+				<th width="30">操作</th>
 			</tr>
 		</thead>
 		<tbody>
-			<?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr class="text-c">
-					<td><?php echo ($vo["sort"]); ?></td>
+			<?php if(is_array($list)): $k = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?><tr class="text-c">
+					<td><?php echo ($vo["gid"]); ?></td>
 					<td width="60"><img src="<?php echo ($vo["img"]); ?>" width="60px"></td>
-					<td><?php echo ($vo["Count"]); ?></td>
-					<td><option value="<?php echo ($vo['cid']); ?>">
-                        |
-                        <?php $__FOR_START_25567__=0;$__FOR_END_25567__=$vo['Count'];for($i=$__FOR_START_25567__;$i < $__FOR_END_25567__;$i+=1){ ?>--<?php } echo ($vo["name"]); ?></td>
-					<td><?php echo (date("Y-m-d",$vo["addtime"])); ?></td>
+					<td><?php echo ($vo["name"]); ?></td>
+					<td><?php echo ($vo["address"]); ?></td>
 					<td class="td-manage">
-						<a title="修改分类" href="<?php echo U('Cate/upd',array('id'=>$vo['cid']));?>"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
-						<a title="删除分类" href="javascript:;" onclick="cate_del(this,'<?php echo ($vo["cid"]); ?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>	
+						<a title="修改" href="<?php echo U('Company/upd',array('id'=>$vo['gid']));?>"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+						<a title="删除" href="javascript:;" onclick="new_del(this,'<?php echo ($vo["gid"]); ?>')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>						
 					</td>
 				</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 				<tr>
@@ -65,20 +77,18 @@
 <script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Lib/layer/2.1/layer.js"></script>
 <script type="text/javascript" src="/Public/Admin/Lib/laypage/1.2/laypage.js"></script> 
-<script type="text/javascript" src="/Public/Admin/Lib/My97DatePicker/WdatePicker.js"></script> 
-<script type="text/javascript" src="/Public/Admin/Lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.admin.js"></script>
 <script type="text/javascript" src="/Public/Admin/Js/common.js"></script>
 <script type="text/javascript">
-	/*删除*/
-	function cate_del(obj,id){
-		layer.confirm('确认要删除栏目及栏目下所有内容吗？',function(index){
-			$(obj).parents("tr").remove();
-			$.get("<?php echo U('Cate/del');?>",{Mid: id});
-			layer.msg('已删除!',{icon:1,time:1000});
-		});
-	}
+/*删除*/
+function new_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$(obj).parents("tr").remove();
+		$.get("<?php echo U('Company/del');?>",{Mid: id});
+		layer.msg('已删除!',{icon:1,time:1000});
+	});
+}
 </script>
 
 

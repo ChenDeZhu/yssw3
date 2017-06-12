@@ -6,20 +6,15 @@ class InformationController extends BaseController{
 	//显示列表页
 	public function index(){
 		$this->isLogin();
-		$type = I('get.type');
-		if($type == 0){
-			$name = "招聘";
-		}else if($type == 1){
-			$name="求职";
-		}else if($type == 2){
-			$name="供应";
-		}else if($type == 3){
-			$name="求购";
-		}else if($type == 4){
-			$name="出租";
-		}else if($type == 5){
-			$name="转让";
+
+		$key       = I('param.key');
+		
+		if(!empty($key)){
+			$where['title'] = "title like '%".$key."%'";
+			$where1['a.title'] = array('like',"%$key%");
 		}
+		$type = I('get.type');
+		$name = getTypeName($type);
 		$M = M('information');
 		$where['type'] = $type;
 		$count = $M->where($where)->count();
@@ -27,32 +22,24 @@ class InformationController extends BaseController{
 		$where1['a.type'] = $type;
 		$list = $M->alias('a')->where($where1)
 		->join('__USER__ b on b.uid = a.uid')
-		->field('a.id,a.title,a.updatetime,b.name')
+		->join('__CATE__ c on c.cid = a.cid')
+		->field('a.id,a.title,a.updatetime,b.name,c.name as cname')
 		->limit($p->firstRow,$p->listRows)
 		->order('a.addtime desc')->select();
-		$this->assign('list',$list);
-		$this->assign('count',$count);
-		$this->assign('page',$p->show());
-		$this->assign('type',$type);
-		$this->assign('name',$name);
+		
+		$this->assign(array(
+			'list'=>$list,
+			'count'=>$count,
+			'page'=>$p->show(),
+			'type'=>$type,
+			'name'=>$name,
+			));
 		$this->display();
 	}
 	//显示添加页面
 	public function add(){
 		$type = I('get.type');
-		if($type == 0){
-			$name = "招聘";
-		}else if($type == 1){
-			$name="求职";
-		}else if($type == 2){
-			$name="供应";
-		}else if($type == 3){
-			$name="求购";
-		}else if($type == 4){
-			$name="出租";
-		}else if($type == 5){
-			$name="转让";
-		}
+		$name = getTypeName($type);
 		$clist = M('cate')->where(array('type'=>$type))->select();
 		$this->assign('clist',$clist);
 		$this->assign('type',$type);
@@ -73,16 +60,19 @@ class InformationController extends BaseController{
 	            $info = $this->uploadfile($_FILES);
 	            if(!empty($info)){
 	                //处理logo
-	                $uniqu = $data['type'].'_'.$res;
+	                $uniqu = $data['type'].'__'.$res;
+	                 // var_dump($info);
 	                $slogoPath = $this->thumpic( $info['img'], '200', '200', $uniqu);
-	                $M->where('id='.$res)->save(['img'=>ltrim($slogoPath, '.')]);       
+	                // var_dump($slogoPath);
+	                $M->where('id='.$res)->save(['img'=>ltrim($slogoPath, '.')]);   
+	                $this->success('添加成功！',U('information/index',array('type'=>$data['type'])));    
 	            }else{
 		        	$M->delete($res);
 		        	$this->error('添加失败！请重新添加！',U('information/index',array('type'=>$data['type'])));	
 		        }
-		  		}else{
-		  			$this->success('添加成功！',U('information/index',array('type'=>$data['type'])));
-		  		}
+	  		}else{
+	  			$this->success('添加成功！',U('information/index',array('type'=>$data['type'])));
+	  		}
         }else{
         	$this->error('添加失败！请重新添加！',U('information/index',array('type'=>$data['type'])));
         }
@@ -92,19 +82,7 @@ class InformationController extends BaseController{
     	$this->isLogin();
 		$info = M('information')->where('id='.I('get.id'))->find();
 		$type = $info['type'];
-		if($type == 0){
-			$name = "招聘";
-		}else if($type == 1){
-			$name="求职";
-		}else if($type == 2){
-			$name="供应";
-		}else if($type == 3){
-			$name="求购";
-		}else if($type == 4){
-			$name="出租";
-		}else if($type == 5){
-			$name="转让";
-		}
+		$name = getTypeName($type);
 
 		$this->assign('type',$type);
 		$this->assign('name',$name);
@@ -122,20 +100,32 @@ class InformationController extends BaseController{
 				$info = $this->uploadfile($_FILES);
 	            if(!empty($info)){
 	                //处理logo
-	                $uniqu = $data['type'].'_'.$data['sid'];
+	                $uniqu = $data['type'].'__'.$res;
+
 	                $slogoPath = $this->thumpic( $info['img'], '200', '200', $uniqu);
-	            }
-            	$this->success('修改成功！',U('information/index',array('type'=>$data['type'])));
+	                $M->where('id='.$data['id'])->save(['img'=>ltrim($slogoPath, '.')]);
+	                $this->success('修改成功！',U('information/index',array('type'=>$data['type'])));
+	            }else{
+	            	$this->error('修改失败！',U('information/index',array('type'=>$data['type'])));
+	            }	
+            	
        		}else{
        			$this->success('修改成功！',U('information/index',array('type'=>$data['type'])));	
        		}
 		}else{
 			$this->error('系统错误！',U('information/index',array('type'=>$data['type'])));	
 		}
+
     }
 
 
-
+    public function del(){
+		$id = trim(I('get.Mid'));
+		// $image_path = './Uploads/Logos/' . $file['savepath'] . 'ppic_' . $id . '.png';
+		// @unlink($image_path);
+		$res = M('information')->delete($id);
+		return $res;
+	}
 
 	
 
