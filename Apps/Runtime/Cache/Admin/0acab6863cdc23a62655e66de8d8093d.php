@@ -46,7 +46,7 @@
 					<td><?php echo ($vo["Count"]); ?></td>
 					<td><option value="<?php echo ($vo['cid']); ?>">
                         |
-                        <?php $__FOR_START_25567__=0;$__FOR_END_25567__=$vo['Count'];for($i=$__FOR_START_25567__;$i < $__FOR_END_25567__;$i+=1){ ?>--<?php } echo ($vo["name"]); ?></td>
+                        <?php $__FOR_START_20676__=0;$__FOR_END_20676__=$vo['Count'];for($i=$__FOR_START_20676__;$i < $__FOR_END_20676__;$i+=1){ ?>--<?php } echo ($vo["name"]); ?></td>
 					<td><?php echo (date("Y-m-d",$vo["addtime"])); ?></td>
 					<td class="td-manage">
 						<a title="修改分类" href="<?php echo U('Cate/upd',array('id'=>$vo['cid']));?>"  class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 

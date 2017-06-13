@@ -11,12 +11,12 @@
 <META HTTP-EQUIV="expires" CONTENT="0">
 <LINK rel="Bookmark" href="/favicon.ico" >
 <LINK rel="Shortcut Icon" href="/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Lib/iconfonts/1.0.7/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Lib/icheck/icheck.css" />
-<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Lib/iconfonts/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Css/style.css" />
 <title>台州银刷商务服务有限公司管理平台</title>
 <!-- <title><?php echo F('profiles')['company'];?>管理平台</title> -->
  

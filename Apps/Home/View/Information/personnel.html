@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>我的机器</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__MUI__/css/mui.min.css">
+	<link rel="stylesheet" href="__MUI__/app.css">
+	<script src="__MUI__/fonts/iconfont.js"></script>
+	<style>
+		.shijian{
+			position: absolute;
+			top: 10px;
+			right: 15px;
+			font-size: 12px;
+			font-weight: 400;
+			color: #8f8f94;
+		}
+		.xiaoxi{
+			position: absolute;
+			top: 8px;
+			left: 45px;
+			font-size: 10px;
+			font-weight: 300;
+			line-height: 18px;
+			color: #fff;
+			background: #ff0000;
+			width: 18px;
+			height: 18px;
+			text-align: center;
+			-moz-border-radius: 50%;
+			-webkit-border-radius: 50%;
+			border-radius:50%;
+		}
+		.shijian b{
+			color: #ff0000;
+			font-size: 14px;
+		}
+		.mui-media-body samp{
+			font-size: 12px;
+		}
+
+		.type{
+			padding:  10px 10px 10px 0 ;
+			border-top: rgba(228, 228, 230, 0.51) 1px solid;
+			margin: 0;
+			overflow: hidden;
+			overflow-x: scroll;
+		}
+		.type ul{
+			padding:0;
+			margin: 0;
+			overflow: hidden;
+			width: 800px;
+		}
+		.type ul li{
+			padding: 0 5px;
+			border-right:  rgba(228, 228, 230, 0.51) 1px solid;
+			margin: 0;
+			overflow: hidden;
+			float: left;
+		}
+		.type .no{
+			color: #ff0000;
+		}
+
+		.shijian{
+			position: absolute;
+			top: 10px;
+			right: 15px;
+			font-size: 12px;
+			font-weight: 400;
+			color: #8f8f94;
+		}
+		.shijian b{
+			color: #ff0000;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+	<div class="type">
+		<ul>
+			<volist name='clist' id='vo'>
+			<a href="{:U('Information/personnel',array('cid'=>$vo['cid']))}" <if condition="$cid eq $vo['cid']"> class="no" </if>><li>{$vo.name}</li></a>
+			</volist>
+		</ul>
+	</div>
+</header>
+<div class="mui-content topws">
+
+	<ul class="mui-table-view mui-table-view-chevron productlb">
+		<volist name="list" id='vo'>
+		<li class="mui-table-view-cell mui-media">
+			<span class="shijian">&yen; <b>{$vo.price}</b></span>
+			<a class="mui-navigate-right" href="product_content.html">
+
+				<div class="mui-media-body">
+					{$vo.title}
+					<div class="parameter">
+						<dl><dt>信息类型</dt><dd>{$vo.tname}</dd></dl>
+						<dl><dt>信息类别</dt><dd>{$vo.cname}</dd></dl>
+						<dl><dt>发布日期</dt><dd>{$vo.updatetime|date="Y年m月d日",###}</dd></dl>
+					</div>
+				</div>
+			</a>
+		</li>
+		</volist>
+		
+	</ul>
+</div>
+<div class="mui-bar mui-bar-tab">
+	<a class="mui-tab-item" href="{:U('index/index')}"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
+	<a class="mui-tab-item mui-active" href="{:U('information/personnel')}"><span class="mui-icon mui-icon-person"></span><span class="mui-tab-label">人才</span></a>
+	<a class="mui-tab-item" href="{:U('information/supply')}"><span class="mui-icon mui-icon-compose"></span><span class="mui-tab-label">供求</span></a>
+	<a class="mui-tab-item" href="{:U('information/rentto')}"><span class="mui-icon mui-icon-reload"></span><span class="mui-tab-label">租转</span></a>
+	<a class="mui-tab-item" href="{:U('user/my')}"><span class="mui-icon mui-icon-contact"></span><span class="mui-tab-label">我的</span></a>
+</div>
+<script src="__MUI__/js/mui.min.js"></script>
+<script>
+    mui.init({
+        //mui js 代码
+    });
+    //测试代码
+    mui('body').on('tap','a',function(){window.top.location.href=this.href;});
+    //微信代码
+   
+</script>
+<div style="display: none">统计代码</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>我的足迹</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__MUI__/css/mui.min.css">
+	<link rel="stylesheet" href="__MUI__/app.css">
+	<script src="__MUI__/fonts/iconfont.js"></script>
+	<style>
+		.shijian{
+			position: absolute;
+			top: 10px;
+			right: 15px;
+			font-size: 12px;
+			font-weight: 400;
+			color: #8f8f94;
+		}
+		.xiaoxi{
+			position: absolute;
+			top: 8px;
+			left: 45px;
+			font-size: 10px;
+			font-weight: 300;
+			line-height: 18px;
+			color: #fff;
+			background: #ff0000;
+			width: 18px;
+			height: 18px;
+			text-align: center;
+			-moz-border-radius: 50%;
+			-webkit-border-radius: 50%;
+			border-radius:50%;
+		}
+		.shijian b{
+			color: #ff0000;
+			font-size: 14px;
+		}
+		.mui-media-body samp{
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+<div class="mui-content topws">
+	<ul class="mui-table-view mui-table-view-chevron topes">
+		<li class="mui-table-view-cell mui-media">
+				<span class="shijian">普通会员</span>
+				<img class="mui-media-object mui-pull-left corners" <if condition="$user['img'] eq null"> src="__MUI__/images/headportrait.jpg" <else/> src="{$user['img']}"</if>>
+				<div class="mui-media-body">
+					{$user.name}
+					<p class="mui-ellipsis-2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close_up_mode"></use></svg> 积分 {$user.score}
+						<svg class="icon" aria-hidden="true"><use xlink:href="#icon-debt"></use></svg> 余额 &yen; {$user.money}</p>
+					
+				</div>
+			</li>
+	</ul>
+	<ul class="mui-table-view mui-table-view-chevron topes">
+
+		<volist name='list' id='v'>
+		<li class="mui-table-view-cell mui-media">
+			<a href="product_content.html">
+				<span class="shijian"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alarm_clock"></use></svg>  {$v.addtime|date="Y年m月d日",###}</span>
+				<img class="mui-media-object mui-pull-left corners" <if condition="$v['img'] eq null"> src="__MUI__/images/headportrait.jpg" <else/> src="{$v['img']}"</if>>
+				<div class="mui-media-body">
+					{$v.title}
+					<p class="mui-ellipsis">频道：{$v.tname} 类别：{$v.name} </p>
+				</div>
+			</a>
+		</li>
+		</volist>
+		<!-- <li class="mui-table-view-cell mui-media">
+			<a href="product_content.html">
+				<span class="shijian"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alarm_clock"></use></svg>  2016年6月06日</span>
+				<img class="mui-media-object mui-pull-left corners" src="__MUI__/images/p-6.jpg">
+				<div class="mui-media-body">
+					出租 单身公寓
+					<p class="mui-ellipsis">频道：xxx 类别：XXX </p>
+				</div>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media">
+			<a href="product_content.html">
+				<span class="shijian"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alarm_clock"></use></svg>  2016年6月06日</span>
+				<img class="mui-media-object mui-pull-left corners" src="__MUI__/images/p-5.jpg">
+				<div class="mui-media-body">
+					转让 厂房
+					<p class="mui-ellipsis">频道：xxx 类别：XXX </p>
+				</div>
+			</a>
+		</li> -->
+	</ul>
+</div>
+<div class="mui-bar mui-bar-tab">
+	<a class="mui-tab-item" href="{:U('index/index')}"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
+	<a class="mui-tab-item" href="{:U('information/personnel')}"><span class="mui-icon mui-icon-person"></span><span class="mui-tab-label">人才</span></a>
+	<a class="mui-tab-item" href="{:U('information/supply')}"><span class="mui-icon mui-icon-compose"></span><span class="mui-tab-label">供求</span></a>
+	<a class="mui-tab-item" href="{:U('information/rentto')}"><span class="mui-icon mui-icon-reload"></span><span class="mui-tab-label">租转</span></a>
+	<a class="mui-tab-item mui-active" href="{:U('user/my')}"><span class="mui-icon mui-icon-contact"></span><span class="mui-tab-label">我的</span></a>
+</div>
+<script src="__MUI__/js/mui.min.js"></script>
+<script>
+    mui.init({
+        //mui js 代码
+    });
+    //测试代码
+    mui('body').on('tap','a',function(){window.top.location.href=this.href;});
+</script>
+<div style="display: none">统计代码</div>
+</body>
+</html>

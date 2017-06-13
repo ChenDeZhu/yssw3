@@ -6,10 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link href="/yssw3/Public/Admin/Css/H-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="/yssw3/Public/Admin/Css/H-ui.login.css" rel="stylesheet" type="text/css" />
-<link href="/yssw3/Public/Admin/Css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="/yssw3/Public/Admin/Lib/iconfonts/1.0.7/iconfont.css" />
+<link href="/Public/Admin/Css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="/Public/Admin/Css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="/Public/Admin/Css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/Public/Admin/Lib/iconfonts/1.0.7/iconfont.css" />
 <title>台州银刷商务服务有限公司管理平台</title>
 </head>
 <body>
@@ -46,8 +46,8 @@
   </div>
 </div>
 <div class="footer">Copyright <?php echo F('profiles')['company'];?> All Rights Reserved.</div>
-<script type="text/javascript" src="/yssw3/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="/yssw3/Public/Admin/Js/H-ui.js"></script> 
+<script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/Public/Admin/Js/H-ui.js"></script> 
 <script type="text/javascript">
   function login(){
       var url = window.location.href;

@@ -34,6 +34,7 @@ return array(
 	    '__HCSS__'   => __ROOT__ . '/Public/Home/Css',
 	    '__HIMAGE__' => __ROOT__ . '/Public/Home/Images',
 	    '__HLIB__'   => __ROOT__ . '/Public/Home/Lib',
+	    '__MUI__'    => __ROOT__ . '/Public/Home/Template',
     ),
 
 	'UPLOAD_PATH' => './Uploads/Images/',//前台图片上传地址
