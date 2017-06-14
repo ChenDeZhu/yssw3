@@ -68,7 +68,7 @@ class UserController extends BaseController{
 				$info = $this->uploadfile($_FILES);
 	            if(!empty($info)){
 	                //处理logo
-	                $uniqu = 'user__'.$data['id'];
+	                $uniqu = 'user__'.$data['uid'];
 
 	                $plogoPath = $this->thumpic( $info['img'], '500', '500', $uniqu);
 	                M('user')->where('uid='.$data['uid'])->save(['img'=>C('WEB_FOLDER').ltrim($plogoPath, '.')]);
@@ -90,7 +90,7 @@ class UserController extends BaseController{
 		$res = M('user')->delete($id);
 		return $res;
 	}
-
+	
 
 
 }

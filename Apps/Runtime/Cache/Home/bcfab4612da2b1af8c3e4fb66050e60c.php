@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8">
-		<title>{$info['tname']}详情</title>
+		<title><?php echo ($info['tname']); ?>详情</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" href="__MUI__/css/mui.min.css">
-		<link rel="stylesheet" href="__MUI__/app.css">
-		<script src="__MUI__/fonts/iconfont.js"></script>
+		<link rel="stylesheet" href="/Public/Home/Template/css/mui.min.css">
+		<link rel="stylesheet" href="/Public/Home/Template/app.css">
+		<script src="/Public/Home/Template/fonts/iconfont.js"></script>
 		<style>
 			.app_machine{
 				padding: 0;
@@ -193,41 +193,39 @@
 		<div class="mui-content topws">
 			<div class="app_machine">
 				<dl>
-					<dt>{$info['title']}</dt>
+					<dt><?php echo ($info['title']); ?></dt>
 					<dd>
-						<svg class="icon" aria-hidden="true"><use xlink:href="#icon-flow_chart"></use></svg> 频道 {$info['tname']}
-						<svg class="icon" aria-hidden="true"><use xlink:href="#icon-list"></use></svg> 类型 {$info['cname']}
-						<svg class="icon" aria-hidden="true"><use xlink:href="#icon-clock"></use></svg> {$info['updatetime']|date="Y年m月d日"}
+						<svg class="icon" aria-hidden="true"><use xlink:href="#icon-flow_chart"></use></svg> 频道 <?php echo ($info['tname']); ?>
+						<svg class="icon" aria-hidden="true"><use xlink:href="#icon-list"></use></svg> 类型 <?php echo ($info['cname']); ?>
+						<svg class="icon" aria-hidden="true"><use xlink:href="#icon-clock"></use></svg> <?php echo (date($info['updatetime'],"Y年m月d日")); ?>
 					</dd>
 				</dl>
-				<img class="machine_img corners" src="__MUI__/images/p-3.jpg">
+				<img class="machine_img corners" src="/Public/Home/Template/images/p-3.jpg">
 			</div>
 			<div class="app_introduce">
 				<dl>
-				<if condition="($info['type'] eq 0) or ($info['type'] eq 1)">
-				<dt>参考工资</dt>
-				<else />
-					<dt>参考价格</dt>
-				</if>
-					<dd>&yen; <b>{$info.price}</b></dd>
+				<?php if(($info['type'] == 0) or ($info['type'] == 1)): ?><dt>参考工资</dt>
+				<?php else: ?>
+					<dt>参考价格</dt><?php endif; ?>
+					<dd>&yen; <b><?php echo ($info["price"]); ?></b></dd>
 				</dl>
 				<div class="describe">
-					{$info.content}
+					<?php echo ($info["content"]); ?>
 				</div>
 				
 				<div class="describeimg">
 					<ul>
-						<li><img src="__MUI__/images/p-1.jpg"></li>
-						<li><img src="__MUI__/images/p-2.jpg"></li>
-						<li><img src="__MUI__/images/p-3.jpg"></li>
-						<li><img src="__MUI__/images/p-4.jpg"></li>
+						<li><img src="/Public/Home/Template/images/p-1.jpg"></li>
+						<li><img src="/Public/Home/Template/images/p-2.jpg"></li>
+						<li><img src="/Public/Home/Template/images/p-3.jpg"></li>
+						<li><img src="/Public/Home/Template/images/p-4.jpg"></li>
 					</ul>
 				</div>
 				<div class="data">
-					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-businessman"></use></svg> 名字</dt><dd>{$info.name}</dd></dl>
-					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-end_call"></use></svg> 电话</dt><dd>{$info.tel}</dd></dl>
-					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cell_phone"></use></svg> 手机</dt><dd>{$info.mobile}</dd></dl>
-					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-globe"></use></svg> 地址</dt><dd>{$info.address}</dd></dl>
+					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-businessman"></use></svg> 名字</dt><dd><?php echo ($info["name"]); ?></dd></dl>
+					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-end_call"></use></svg> 电话</dt><dd><?php echo ($info["tel"]); ?></dd></dl>
+					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cell_phone"></use></svg> 手机</dt><dd><?php echo ($info["mobile"]); ?></dd></dl>
+					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-globe"></use></svg> 地址</dt><dd><?php echo ($info["address"]); ?></dd></dl>
 				</div>
 				<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LsCtmRBzqzIa2CnXEhm40ANbqrGlqCaQ"></script>
 				<div class="map">
@@ -236,7 +234,7 @@
 						// 百度地图API功能
 						var sContent =
 								"<h4 style='margin:0 0 5px 0;padding:0.2em 0'>陈恩华</h4>" +
-								"<img style='float:right;margin:4px' id='imgDemo' src='__MUI__/images/p-3.jpg' width='60' height='60''/>" +
+								"<img style='float:right;margin:4px' id='imgDemo' src='/Public/Home/Template/images/p-3.jpg' width='60' height='60''/>" +
 								"<p style='margin:0;line-height:1.5;font-size:13px;'>手机：15355688333<br>地址：浙江 台州 路桥区</p>" +
 								"</div>";
 						var map = new BMap.Map("allmap");
@@ -259,13 +257,13 @@
 
 		</div>
 <div class="mui-bar mui-bar-tab">
-	<a class="mui-tab-item" href="{:U('index/index')}"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
-	<a class="mui-tab-item" href="{:U('information/personnel')}"><span class="mui-icon mui-icon-person"></span><span class="mui-tab-label">人才</span></a>
-	<a class="mui-tab-item" href="{:U('information/supply')}"><span class="mui-icon mui-icon-compose"></span><span class="mui-tab-label">供求</span></a>
-	<a class="mui-tab-item" href="{:U('information/rentto')}"><span class="mui-icon mui-icon-reload"></span><span class="mui-tab-label">租转</span></a>
-	<a class="mui-tab-item" href="{:U('user/my')}"><span class="mui-icon mui-icon-contact"></span><span class="mui-tab-label">我的</span></a>
+	<a class="mui-tab-item" href="<?php echo U('index/index');?>"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
+	<a class="mui-tab-item" href="<?php echo U('information/personnel');?>"><span class="mui-icon mui-icon-person"></span><span class="mui-tab-label">人才</span></a>
+	<a class="mui-tab-item" href="<?php echo U('information/supply');?>"><span class="mui-icon mui-icon-compose"></span><span class="mui-tab-label">供求</span></a>
+	<a class="mui-tab-item" href="<?php echo U('information/rentto');?>"><span class="mui-icon mui-icon-reload"></span><span class="mui-tab-label">租转</span></a>
+	<a class="mui-tab-item" href="<?php echo U('user/my');?>"><span class="mui-icon mui-icon-contact"></span><span class="mui-tab-label">我的</span></a>
 </div>
-<script src="__MUI__/js/mui.min.js"></script>
+<script src="/Public/Home/Template/js/mui.min.js"></script>
 <script>
     mui.init({
         //mui js 代码

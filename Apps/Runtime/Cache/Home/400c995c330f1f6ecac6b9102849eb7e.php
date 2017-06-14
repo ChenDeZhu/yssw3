@@ -236,62 +236,20 @@
 				</dl>
 			</div>
 			<ul class="mui-table-view mui-table-view-chevron productlb topbk">
-				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="/Public/Home/Template/images/p-1.jpg">
+			<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
+					<span class="shijian">&yen; <b><?php echo ($vo["price"]); ?></b></span>
+					<a class="mui-navigate-right" href="<?php echo U('Information/detail',array('id'=>$vo['id']));?>">
+					<?php if($vo['img'] != null): ?><img class="mui-media-object mui-pull-left" src="<?php echo ($vo["img"]); ?>"><?php endif; ?>
 						<div class="mui-media-body">
-							供应信息
+							<?php echo ($vo["title"]); ?>
 							<div class="parameter">
-								<dl><dt>频道</dt><dd>供应</dd></dl>
-								<dl><dt>类别</dt><dd>日用品</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
+								<dl><dt>频道</dt><dd><?php echo ($vo['tname']); ?></dd></dl>
+								<dl><dt>类别</dt><dd><?php echo ($vo['name']); ?></dd></dl>
+								<dl><dt>日期</dt><dd><?php echo (date("Y-m-d",$vo["updatetime"])); ?></dd></dl>
 							</div>
 						</div>
 					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="/Public/Home/Template/images/p-4.jpg">
-						<div class="mui-media-body">
-							求购信息
-							<div class="parameter">
-								<dl><dt>频道</dt><dd>求购</dd></dl>
-								<dl><dt>类别</dt><dd>日用品</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="/Public/Home/Template/images/p-5.jpg">
-						<div class="mui-media-body">
-							转让信息
-							<div class="parameter">
-								<dl><dt>频道</dt><dd>转让</dd></dl>
-								<dl><dt>类别</dt><dd>厂房</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="/Public/Home/Template/images/p-6.jpg">
-						<div class="mui-media-body">
-							出租信息
-							<div class="parameter">
-								<dl><dt>频道</dt><dd>出租</dd></dl>
-								<dl><dt>类别</dt><dd>房子</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-							</div>
-						</div>
-					</a>
-				</li>
+				</li><?php endforeach; endif; else: echo "" ;endif; ?>
 			</ul>
 		</div>
 		<div class="mui-bar mui-bar-tab">

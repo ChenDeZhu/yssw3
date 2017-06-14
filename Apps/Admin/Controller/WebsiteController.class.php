@@ -12,16 +12,17 @@ class WebsiteController extends BaseController
 	 */
 	public function profile(){
 		$this->isLogin();
-		$pro = F('profiles');
-		$pro['profiles'] = htmlspecialchars_decode($pro['profiles']);
+		// $pro = F('profiles');
+		$pro = M('setting')->find(1);
+		$pro['content'] = htmlspecialchars_decode($pro['content']);
 		$this->assign('pro',$pro);
 		$this->display();
 	}
 	public function pupt(){
 		$data          = I('post.');
-		$data['pdate'] = date('Y-m-d H:i:s',time());
-		$data['profiles'] = htmlspecialchars_decode($data['editorValue']);
-		F('profiles',$data);
+		$data['update'] = time();
+		$data['content'] = htmlspecialchars_decode($data['editorValue']);
+		M('setting')->save($data);
 		$this->success('修改成功！',U('Website/profile'));
 	}
 

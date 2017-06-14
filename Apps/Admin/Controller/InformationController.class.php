@@ -23,7 +23,7 @@ class InformationController extends BaseController{
 		$list = $M->alias('a')->where($where1)
 		->join('__USER__ b on b.uid = a.uid')
 		->join('__CATE__ c on c.cid = a.cid')
-		->field('a.id,a.title,a.updatetime,b.name,c.name as cname')
+		->field('a.id,a.title,a.updatetime,b.name,c.name as cname,a.img')
 		->limit($p->firstRow,$p->listRows)
 		->order('a.addtime desc')->select();
 		
@@ -41,6 +41,8 @@ class InformationController extends BaseController{
 		$type = I('get.type');
 		$name = getTypeName($type);
 		$clist = M('cate')->where(array('type'=>$type))->select();
+		$ulist = M('user')->field('uid,name')->select();
+		$this->assign('ulist',$ulist);
 		$this->assign('clist',$clist);
 		$this->assign('type',$type);
 		$this->assign('name',$name);
@@ -64,15 +66,18 @@ class InformationController extends BaseController{
 	                 // var_dump($info);
 	                $slogoPath = $this->thumpic( $info['img'], '200', '200', $uniqu);
 	                // var_dump($slogoPath);
-	                $M->where('id='.$res)->save(['img'=>ltrim($slogoPath, '.')]);   
-	                $this->success('添加成功！',U('information/index',array('type'=>$data['type'])));    
+	                $M->where('id='.$res)->save(['img'=>ltrim($slogoPath, '.')]);      
 	            }else{
 		        	$M->delete($res);
-		        	$this->error('添加失败！请重新添加！',U('information/index',array('type'=>$data['type'])));	
+		        	$this->error('添加失败！请重新添加！',U('information/index',array('type'=>$data['type'])));
 		        }
-	  		}else{
-	  			$this->success('添加成功！',U('information/index',array('type'=>$data['type'])));
 	  		}
+	  		//添加轮播图
+	  		if(!empty($_FILES['lunbo'])){
+
+	  		}
+	  		$this->success('添加成功！',U('information/index',array('type'=>$data['type'])));
+	  		
         }else{
         	$this->error('添加失败！请重新添加！',U('information/index',array('type'=>$data['type'])));
         }
@@ -83,7 +88,10 @@ class InformationController extends BaseController{
 		$info = M('information')->where('id='.I('get.id'))->find();
 		$type = $info['type'];
 		$name = getTypeName($type);
-
+		$clist = M('cate')->where(array('type'=>$type))->select();
+		$ulist = M('user')->field('uid,name')->select();
+		$this->assign('ulist',$ulist);
+		$this->assign('clist',$clist);
 		$this->assign('type',$type);
 		$this->assign('name',$name);
 		$this->assign('info',$info);
@@ -103,7 +111,7 @@ class InformationController extends BaseController{
 	                $uniqu = $data['type'].'__'.$res;
 
 	                $slogoPath = $this->thumpic( $info['img'], '200', '200', $uniqu);
-	                $M->where('id='.$data['id'])->save(['img'=>ltrim($slogoPath, '.')]);
+	               	M('information')->where('id='.$data['id'])->save(['img'=>ltrim($slogoPath, '.')]);
 	                $this->success('修改成功！',U('information/index',array('type'=>$data['type'])));
 	            }else{
 	            	$this->error('修改失败！',U('information/index',array('type'=>$data['type'])));

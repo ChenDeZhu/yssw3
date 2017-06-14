@@ -59,22 +59,22 @@
 			</ul>
 
 			<ul class="mui-table-view mui-grid-view mui-grid-9">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="<?php echo U('addinfo',array('type'=>0));?>">
 					<span class="mui-icon mui-icon-personadd"></span>
 					<div class="mui-media-body">招聘</div></a></li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="<?php echo U('addinfo',array('type'=>2));?>">
 					<span class="mui-icon mui-icon-upload"></span>
 					<div class="mui-media-body">供应</div></a></li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="<?php echo U('addinfo',array('type'=>4));?>">
 					<span class="mui-icon mui-icon-refresh"></span>
 					<div class="mui-media-body">出租</div></a></li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="<?php echo U('addinfo',array('type'=>1));?>">
 					<span class="mui-icon mui-icon-person"></span>
 					<div class="mui-media-body">求职</div></a></li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="<?php echo U('addinfo',array('type'=>3));?>">
 					<span class="mui-icon mui-icon-download"></span>
 					<div class="mui-media-body">求购</div></a></li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="<?php echo U('addinfo',array('type'=>5));?>">
 					<span class="mui-icon mui-icon-reload"></span>
 					<div class="mui-media-body">转让</div></a></li>
 			</ul>

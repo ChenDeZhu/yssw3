@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>账户充值</title>
+		<title>发布信息</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -58,39 +58,50 @@
 					</div>
 				</li>
 			</ul>
-
 			<form class="mui-input-group topes">
+			<input type="hidden" id="type" value="<?php echo ($type); ?>">
 				<div class="mui-input-row">
-					<label>微信</label>
-					<input type="text" placeholder="请输入您的微信号">
+					<label>信息类型</label>
+					<input type="text" value="<?php echo ($name); ?>" readonly="readonly">
 				</div>
 				<div class="mui-input-row">
-					<label>手机</label>
-					<input type="text" placeholder="请输入您的手机号码">
+					<label><?php echo ($name); ?>栏目</label>
+					<select name="cid">
+					<option value="">请选择栏目</option>
+						<?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["cid"]); ?>"><?php echo ($vo["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+					</select>
 				</div>
 				<div class="mui-input-row">
-					<label>金额</label>
-					<input type="text" placeholder="请输入金额">
+					<label><?php echo ($name); ?>标题</label>
+					<input type="text" placeholder="请输入标题" id="title">
+				</div>
+				<div class="mui-input-row">
+					<label>联系人</label>
+					<input type="text" placeholder="请输入联系人" id="name">
+				</div>
+				<div class="mui-input-row">
+					<label>联系电话</label>
+					<input type="text" placeholder="请输入联系电话" id="mobile">
+				</div>
+				<div class="mui-input-row">
+				<?php if(($type == 0) or ($type == 1)): ?><label>参考薪酬</label>
+					<?php else: ?>
+					<label>参考价格</label><?php endif; ?>
+					<input type="text" placeholder="请输入金额" id="price">
+				</div>
+				<div class="mui-input-row">
+					<label>地址</label>
+					<input type="text" placeholder="请输入联系地址" id="address">
+				</div>
+				
+			</form>
+			<div class="mui-input-row" style="margin: 10px 5px;">
+					<textarea id="textarea" rows="5" placeholder="请输入信息详情" id="content"></textarea>
 				</div>
 				<div class="mui-button-row">
-					<button type="button" class="mui-btn mui-btn-primary" onclick="return false;">充值账户</button>&nbsp;&nbsp;
-					<button type="button" class="mui-btn mui-btn-danger" onclick="return false;">余额提现</button>
+					<button type="button" class="mui-btn mui-btn-primary" id="updatec">发布信息</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="mui-btn mui-btn-danger" onclick="window.history.back();">取消发布</button>
 				</div>
-			</form>
-			<ul class="mui-table-view topes">
-			<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell">
-					<a class="mui-navigate-right">
-						<?php if($vo['type'] == 0 ): ?><span class="mui-badge mui-badge-primary">充值 <?php echo ($vo["money"]); ?>元</span>
-						<?php elseif($vo['type'] == 1): ?>
-						<span class="mui-badge mui-badge-danger">消费 <?php echo ($vo["money"]); ?>元</span>
-						<?php elseif($vo['type'] == 2): ?>
-						<span class="mui-badge mui-badge-success">提现 <?php echo ($vo["money"]); ?>元</span>
-						<?php elseif($vo['type'] == 3): ?>
-						<span class="mui-badge mui-badge-warning">推广佣金 <?php echo ($vo["money"]); ?>元</span><?php endif; ?>
-						<?php echo (date("Y年m月d日",$vo["addtime"])); ?>
-					</a>
-				</li><?php endforeach; endif; else: echo "" ;endif; ?>
-			</ul>
 		</div>
 		<div class="mui-bar mui-bar-tab">
 		<a class="mui-tab-item" href="<?php echo U('index/index');?>"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
@@ -107,6 +118,32 @@
         //测试代码
         mui('body').on('tap','a',function(){window.top.location.href=this.href;});
         //微信代码
+        var before = 1;
+        mui('#updatec')[0].addEventListener('tap',function(){
+        	if(before == 0){
+        		return false;
+        	}
+        	before = 0;
+        	var postdate = {};
+        	postdate['uid'] = <?php echo ($user["uid"]); ?>;
+        	postdate['type'] = mui('#type')[0].value;
+        	postdate['title'] = mui('#title')[0].value;
+        	postdate['mobile'] = mui('#mobile')[0].value;
+        	postdate['price'] = mui('#price')[0].value;
+        	postdate['address'] = mui('#address')[0].value;
+        	postdate['content'] = mui('#content').value;
+        	mui.post("<?php echo U('addvip');?>",postdate,function(res){
+					if(res==1){
+						before = 1;
+						mui.toast('发布成功');
+						setTimeout("window.location.href='/index.php/User/myPush'",500);
+					}else{
+						mui.toast('系统繁忙，请稍后再试');
+					}
+				},'json'
+			);
+        });
+        
 	</script>
 	<div style="display: none">统计代码</div>
 	</body>

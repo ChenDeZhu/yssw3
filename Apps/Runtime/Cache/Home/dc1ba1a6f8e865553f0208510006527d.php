@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>升级说明</title>
+		<title>升级vip</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -59,29 +59,30 @@
 				</li>
 			</ul>
 			<form class="mui-input-group topes">
+			<input type="hidden" id="gid" value="<?php echo ($company["gid"]); ?>">
 				<div class="mui-input-row">
 					<label>公司</label>
-					<input type="text" placeholder="请输入您的公司名称">
+					<input type="text" placeholder="请输入您的公司名称" id="name" value="<?php echo ($company["name"]); ?>">
 				</div>
 				<div class="mui-input-row">
 					<label>电话</label>
-					<input type="text" placeholder="请输入您的公司电话">
+					<input type="text" placeholder="请输入您的公司电话" id="tel" value="<?php echo ($company["tel"]); ?>">
 				</div>
 				<div class="mui-input-row">
 					<label>传真</label>
-					<input type="text" placeholder="请输入您的公司传真">
+					<input type="text" placeholder="请输入您的公司传真" id="fax" value="<?php echo ($company["fax"]); ?>">
 				</div>
 				<div class="mui-input-row">
 					<label>地址</label>
-					<input type="text" placeholder="请输入公司地址">
+					<input type="text" placeholder="请输入公司地址" id="address" value="<?php echo ($company["address"]); ?>">
 				</div>
 				<div class="mui-input-row">
 					<label>介绍</label>
-					<input type="text" placeholder="请输入您的公司介绍">
+					<input type="text" placeholder="请输入您的公司介绍" id="content" value="<?php echo ($company["content"]); ?>">
 				</div>
 				<div class="mui-button-row">
-					<button type="button" class="mui-btn mui-btn-primary" onclick="return false;">申请商铺</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" class="mui-btn mui-btn-danger" onclick="return false;">取消修改</button>
+					<button type="button" class="mui-btn mui-btn-primary" id="updatec">申请商铺</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="mui-btn mui-btn-danger" onclick="window.history.back();">取消申请</button>
 				</div>
 			</form>
 		</div>
@@ -100,7 +101,27 @@
         //测试代码
         mui('body').on('tap','a',function(){window.top.location.href=this.href;});
         //微信代码
-       
+        mui('#updatec')[0].addEventListener('tap',function(){
+        	var postdate = {};
+        	postdate['uid'] = <?php echo ($user["uid"]); ?>;
+        	postdate['gid'] = mui('#gid')[0].value;
+        	postdate['name'] = mui('#name')[0].value;
+        	postdate['tel'] = mui('#tel')[0].value;
+        	postdate['fax'] = mui('#fax')[0].value;
+        	postdate['address'] = mui('#address')[0].value;
+        	postdate['content'] = mui('#content')[0].value;
+        	mui.post("<?php echo U('addvip');?>",postdate,function(res){
+					if(res==1){
+						mui.toast('申请成功');
+					}else if(res ==2){
+						mui.toast('申请正在审核中，请勿重复提交');
+					}else{
+						mui.toast('系统繁忙，请稍后再试');
+					}
+				},'json'
+			);
+        });
+        
 	</script>
 	<div style="display: none">统计代码</div>
 	</body>

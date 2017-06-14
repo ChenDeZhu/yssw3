@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>我的机器</title>
+		<title>转租列表</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -84,50 +84,29 @@
 	<header class="mui-bar mui-bar-nav">
 		<div class="type">
 			<ul>
-				<a href="rentto.html" class="no"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
+			<?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href="<?php echo U('Information/rentto',array('cid'=>$vo['cid']));?>" <?php if($cid == $vo['cid']): ?>class="no"<?php endif; ?>><li><?php echo ($vo["name"]); ?></li></a><?php endforeach; endif; else: echo "" ;endif; ?>
+
 			</ul>
 		</div>
 	</header>
 	<div class="mui-content topws">
 
 		<ul class="mui-table-view mui-table-view-chevron productlb">
-
-			<li class="mui-table-view-cell mui-media">
-				<span class="shijian">&yen <b>2000.00</b></span>
-				<a class="mui-navigate-right" href="product_content.html">
-					<img class="mui-media-object mui-pull-left" src="/Public/Home/Template/images/p-5.jpg">
+		<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
+				<span class="shijian">&yen; <b><?php echo ($vo["price"]); ?></b></span>
+				<a class="mui-navigate-right" href="<?php echo U('Information/detail',array('id'=>$vo['id']));?>">
+					<img class="mui-media-object mui-pull-left" <?php if($vo['img'] != null): ?>src="<?php echo ($vo['img']); ?>"<?php else: ?> src="/Public/Home/Template/images/p-5.jpg"<?php endif; ?>>
 					<div class="mui-media-body">
-						转让信息
+						<?php echo ($vo["title"]); ?>
 						<div class="parameter">
-							<dl><dt>频道</dt><dd>转让</dd></dl>
-							<dl><dt>类别</dt><dd>厂房</dd></dl>
-							<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
+							<dl><dt>频道</dt><dd><?php echo ($vo["tname"]); ?></dd></dl>
+							<dl><dt>类别</dt><dd><?php echo ($vo["cname"]); ?></dd></dl>
+							<dl><dt>日期</dt><dd><?php echo (date("Y年m月d日",$vo["update"])); ?></dd></dl>
 						</div>
 					</div>
 				</a>
-			</li>
-			<li class="mui-table-view-cell mui-media">
-				<span class="shijian">&yen <b>2000.00</b></span>
-				<a class="mui-navigate-right" href="product_content.html">
-					<img class="mui-media-object mui-pull-left" src="/Public/Home/Template/images/p-6.jpg">
-					<div class="mui-media-body">
-						出租信息
-						<div class="parameter">
-							<dl><dt>频道</dt><dd>出租</dd></dl>
-							<dl><dt>类别</dt><dd>房子</dd></dl>
-							<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-						</div>
-					</div>
-				</a>
-			</li>
+			</li><?php endforeach; endif; else: echo "" ;endif; ?>
+			
 		</ul>
 	</div>
 <div class="mui-bar mui-bar-tab">

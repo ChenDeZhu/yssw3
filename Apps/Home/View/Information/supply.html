@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>我的机器</title>
+	<title>供求列表</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -96,7 +96,7 @@
 		<volist name="list" id='vo'>
 			<li class="mui-table-view-cell mui-media">
 				<span class="shijian">&yen; <b>{$vo.price}</b></span>
-				<a class="mui-navigate-right" href="product_content.html">
+				<a class="mui-navigate-right" href="{:U('Information/detail',array('id'=>$vo['id']))}">
 					<img class="mui-media-object mui-pull-left" <if condition="$vo[img] eq null"> src="__MUI__/images/p-4.jpg"<else/>src="{$vo['img']}" </if>>
 					<div class="mui-media-body">
 						{$vo.title}

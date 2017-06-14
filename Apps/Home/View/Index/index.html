@@ -232,66 +232,28 @@
 			<div class="notice">
 				<dl>
 					<dt><img src="__MUI__/images/NOTICE.png"></dt>
-					<dd class="marquee"><div>台州银刷商务服务有限公司微信号开始立刻运营了！</div></dd>
+					<dd class="marquee"><div>{$info['notice']}</div></dd>
 				</dl>
 			</div>
 			<ul class="mui-table-view mui-table-view-chevron productlb topbk">
+			<volist name='list' id='vo'>
 				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="__MUI__/images/p-1.jpg">
+					<span class="shijian">&yen; <b>{$vo.price}</b></span>
+					<a class="mui-navigate-right" href="{:U('Information/detail',array('id'=>$vo['id']))}">
+					<if condition="$vo['img'] neq null">
+						<img class="mui-media-object mui-pull-left" src="{$vo.img}">
+						</if>
 						<div class="mui-media-body">
-							供应信息
+							{$vo.title}
 							<div class="parameter">
-								<dl><dt>频道</dt><dd>供应</dd></dl>
-								<dl><dt>类别</dt><dd>日用品</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
+								<dl><dt>频道</dt><dd>{$vo['tname']}</dd></dl>
+								<dl><dt>类别</dt><dd>{$vo['name']}</dd></dl>
+								<dl><dt>日期</dt><dd>{$vo.updatetime|date="Y-m-d",###}</dd></dl>
 							</div>
 						</div>
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="__MUI__/images/p-4.jpg">
-						<div class="mui-media-body">
-							求购信息
-							<div class="parameter">
-								<dl><dt>频道</dt><dd>求购</dd></dl>
-								<dl><dt>类别</dt><dd>日用品</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="__MUI__/images/p-5.jpg">
-						<div class="mui-media-body">
-							转让信息
-							<div class="parameter">
-								<dl><dt>频道</dt><dd>转让</dd></dl>
-								<dl><dt>类别</dt><dd>厂房</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<span class="shijian">&yen; <b>2000.00</b></span>
-					<a class="mui-navigate-right" href="product_content.html">
-						<img class="mui-media-object mui-pull-left" src="__MUI__/images/p-6.jpg">
-						<div class="mui-media-body">
-							出租信息
-							<div class="parameter">
-								<dl><dt>频道</dt><dd>出租</dd></dl>
-								<dl><dt>类别</dt><dd>房子</dd></dl>
-								<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-							</div>
-						</div>
-					</a>
-				</li>
+			</volist>
 			</ul>
 		</div>
 		<div class="mui-bar mui-bar-tab">

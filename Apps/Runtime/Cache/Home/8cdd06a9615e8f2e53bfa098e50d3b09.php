@@ -72,11 +72,11 @@
 	</ul>
 </div>
 <div class="mui-bar mui-bar-tab">
-	<a class="mui-tab-item" href="index.html"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
-	<a class="mui-tab-item" href="personnel.html"><span class="mui-icon mui-icon-person"></span><span class="mui-tab-label">人才</span></a>
-	<a class="mui-tab-item" href="supply.html"><span class="mui-icon mui-icon-compose"></span><span class="mui-tab-label">供求</span></a>
-	<a class="mui-tab-item" href="rentto.html"><span class="mui-icon mui-icon-reload"></span><span class="mui-tab-label">租转</span></a>
-	<a class="mui-tab-item mui-active" href="my.html"><span class="mui-icon mui-icon-contact"></span><span class="mui-tab-label">我的</span></a>
+	<a class="mui-tab-item" href="<?php echo U('index/index');?>"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
+	<a class="mui-tab-item" href="<?php echo U('information/personnel');?>"><span class="mui-icon mui-icon-person"></span><span class="mui-tab-label">人才</span></a>
+	<a class="mui-tab-item" href="<?php echo U('information/supply');?>"><span class="mui-icon mui-icon-compose"></span><span class="mui-tab-label">供求</span></a>
+	<a class="mui-tab-item" href="<?php echo U('information/rentto');?>"><span class="mui-icon mui-icon-reload"></span><span class="mui-tab-label">租转</span></a>
+	<a class="mui-tab-item mui-active" href="<?php echo U('user/my');?>"><span class="mui-icon mui-icon-contact"></span><span class="mui-tab-label">我的</span></a>
 </div>
 <script src="/Public/Home/Template/js/mui.min.js"></script>
 <script>

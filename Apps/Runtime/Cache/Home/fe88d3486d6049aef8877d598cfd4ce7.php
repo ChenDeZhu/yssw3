@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>我的机器</title>
+	<title>人才列表</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -94,7 +94,7 @@
 	<ul class="mui-table-view mui-table-view-chevron productlb">
 		<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
 			<span class="shijian">&yen; <b><?php echo ($vo["price"]); ?></b></span>
-			<a class="mui-navigate-right" href="product_content.html">
+			<a class="mui-navigate-right" href="<?php echo U('Information/detail',array('id'=>$vo['id']));?>">
 
 				<div class="mui-media-body">
 					<?php echo ($vo["title"]); ?>

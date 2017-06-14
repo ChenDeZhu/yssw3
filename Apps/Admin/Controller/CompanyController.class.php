@@ -84,6 +84,14 @@ class CompanyController extends BaseController{
 		}
 	}
 
+	public function del(){
+		$id = trim(I('get.Mid'));
+		// $image_path = './Uploads/Logos/' . $file['savepath'] . 'ppic_' . $id . '.png';
+		// @unlink($image_path);
+		$res = M('company')->delete($id);
+		return $res;
+	}
+
 
 
 }

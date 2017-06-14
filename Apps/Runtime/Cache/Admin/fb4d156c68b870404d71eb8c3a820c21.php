@@ -58,31 +58,87 @@
             </div>
         </div>
         <input type="hidden" name="type" value="<?php echo ($type); ?>">
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span><?php echo ($name); ?>标题：</label>
-			<div class="formControls col-xs-5 col-sm-6">
-				<input type="text" class="input-text radius" value="" placeholder="" name="title" id="title">
-			</div>
-		</div>
         <div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>图片：</label>
-		<div class="main-upload">
-          <div class="main-img">
-            <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
-            <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
-            <img id="preview2"> </div>
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span><?php echo ($name); ?>标题：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="" placeholder="" name="title" id="title">
+            </div>
         </div>
-
+        <div class="row cl">
+        <label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>图片：</label>
+        <div class="main-upload">
+            <div class="main-img">
+                <input class="input" type="file" name="img" id="doc1" style="opacity:0; display:none;" onchange="javascript:setImagePreview(1);">
+                <label id="a1" for="doc1" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
+                <img id="preview1">
+            </div>
+        </div>
+        </div>
+        <div class="row cl lunbo">
+		<label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>详情图：</label>
+		<div class="main-upload">
+            <div class="main-img">
+                <input class="input" type="file" name="lunbo[]" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview(2);">
+                <label id="a2" for="doc2" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
+                <img id="preview2">
+            </div>
+        </div>
+        <div class="main-upload">
+            <div class="main-img">
+                <input class="input" type="file" name="lunbo[]" id="doc3" style="opacity:0; display:none;" onchange="javascript:setImagePreview(3);">
+                <label id="a3" for="doc3" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
+                <img id="preview3">
+            </div>
+        </div>
+        <div class="main-upload">
+            <div class="main-img">
+                <input class="input" type="file" name="lunbo[]" id="doc4" style="opacity:0; display:none;" onchange="javascript:setImagePreview(4);">
+                <label id="a4" for="doc4" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
+                <img id="preview4">
+            </div>
+        </div>
+        <div class="main-upload">
+            <div class="main-img">
+                <input class="input" type="file" name="lunbo[]" id="doc5" style="opacity:0; display:none;" onchange="javascript:setImagePreview(5);">
+                <label id="a5" for="doc5" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
+                <img id="preview5">
+            </div>
+        </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系人：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="" placeholder="" name="name" id="name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span><?php if(($type == 1 )or ($type == 0)): ?>参考工资：<?php else: ?>参考价格：<?php endif; ?></label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="" placeholder="" name="price" id="price">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系电话：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="" placeholder="" name="mobile" id="mobile">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>地址：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="" placeholder="" name="address" id="address">
+            </div>
+        </div>
         </div>
         <div class="row cl">
           <label class="form-label col-xs-4 col-sm-3">是否推荐：</label>
           <div class="formControls col-xs-5 col-sm-6">
                  <div class="radio-box">
-                    <input type="radio" id="radio-1" name="demo-radio1">
+                    <input type="radio" id="radio-1" name="recommend">
                     <label for="radio-1">是 </label>
                   </div>
                 <div class="radio-box">
-                    <input type="radio" id="radio-2" name="demo-radio1" checked>
+                    <input type="radio" id="radio-2" name="recommend" checked>
                     <label for="radio-2">否</label>
                 </div>
           </div>
@@ -121,7 +177,7 @@
     height: 100px;
     margin: 0 auto;
 }
-#a2{
+.upimg{
     display: block;
     width: 150px;
     height: 20px;
@@ -133,23 +189,26 @@
     line-height: 20px;
     z-index: 999;
 }
-#a2 i{
+.upimg i{
     color: #fff;
 }
-#a2:hover{
+.upimg:hover{
   background: #0a6999;
+}
+.lunbo .main-upload{
+    
 }
 </style>
 <script>
-function setImagePreview() {
-  var docObj2=document.getElementById("doc2");
-  var imgObjPreview2=document.getElementById("preview2");
-  if(docObj2.files &&    docObj2.files[0]){
+function setImagePreview(number) {
+  var docObj=document.getElementById("doc"+number);
+  var imgObjPreview=document.getElementById("preview"+number);
+  if(docObj.files &&    docObj.files[0]){
   //火狐下，直接设img属性
-  imgObjPreview2.style.display = 'block';
-  imgObjPreview2.style.width="100%";
-  imgObjPreview2.style.height="100%"; 
-  imgObjPreview2.src = window.URL.createObjectURL(docObj2.files[0]);
+  imgObjPreview.style.display = 'block';
+  imgObjPreview.style.width="100%";
+  imgObjPreview.style.height="100%"; 
+  imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
   }
   return true;
 }

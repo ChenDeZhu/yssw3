@@ -63,14 +63,16 @@
 		
 		<ul class="mui-table-view mui-table-view-chevron productlb topes">
 			<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
-				<a class="mui-navigate-right" href="my_product_content.html">
+				<a class="mui-navigate-right" href="<?php echo U('Information/detail',array('id'=>$vo['id']));?>">
 					<img class="mui-media-object mui-pull-left" <?php if($vo['img'] == null): ?>src="/Public/Home/Template/images/headportrait.jpg" <?php else: ?> src="<?php echo ($vo['img']); ?>"<?php endif; ?>>
+					<!-- <span class="mui-badge mui-badge-primary">编辑</span> -->
+					<span class="mui-badge mui-badge-danger">删除</span>
 					<div class="mui-media-body">
 						<?php echo ($vo["title"]); ?>
 						<div class="parameter">
 							<dl><dt>频道</dt><dd><?php echo ($vo["type"]); ?></dd></dl>
 							<dl><dt>类别</dt><dd><?php echo ($vo["name"]); ?></dd></dl>
-							<dl><dt>日期</dt><dd><?php echo (date("m年Y月d日",$vo["addtime"])); ?></dd></dl>
+							<dl><dt>日期</dt><dd><?php echo (date("Y年m月d日",$vo["addtime"])); ?></dd></dl>
 						</div>
 					</div>
 				</a>

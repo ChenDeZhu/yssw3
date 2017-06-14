@@ -40,8 +40,18 @@
                   <select class="select" size="1" name="uid" id="uid">
                     <option value="">--请选择用户--</option>
                     
-                        <option value="1" <?php if(1 == $info['uid']): ?>selected<?php endif; ?>>我是第一个用户</option>
-                    
+                        <?php if(is_array($ulist)): $i = 0; $__LIST__ = $ulist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>" <?php if($vo['uid'] == $info['uid']): ?>selected<?php endif; ?>><?php echo ($vo["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                  </select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属栏目：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <span class="select-box">
+                  <select class="select" size="1" name="cid" id="cid">
+                    <option value="">--请选择栏目--</option>
+                    <?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v['cid']); ?>" <?php if($v['cid'] == $info['cid']): ?>selected<?php endif; ?>><?php echo ($v['name']); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                   </select>
                 </span>
             </div>
@@ -54,13 +64,39 @@
 				<input type="text" class="input-text radius" value="<?php echo ($info["title"]); ?>" placeholder="" name="title" id="title">
 			</div>
 		</div>
-         <div class="row cl">
+        <div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>图片：</label>
 		<div class="main-upload">
-          <div class="main-img">
-            <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
-            <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
-            <img id="preview2" src="<?php echo ($info["img"]); ?>"  style="display: block; width: 100%"> </div>
+            <div class="main-img">
+                <input class="input" type="file" name="img" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview();">
+                <label id="a2" for="doc2"><i class="Hui-iconfont">&#xe600;</i></label>
+                <img id="preview2" src="<?php echo ($info["img"]); ?>"  style="display: block; width: 100%">
+            </div>
+        </div>
+        
+         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系人：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="<?php echo ($info["name"]); ?>" placeholder="" name="name" id="name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span><?php if(($type == 1 )or ($type == 0)): ?>参考工资：<?php else: ?>参考价格：<?php endif; ?></label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="<?php echo ($info["price"]); ?>" placeholder="" name="price" id="price">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系电话：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="<?php echo ($info["mobile"]); ?>" placeholder="" name="mobile" id="mobile">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>地址：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <input type="text" class="input-text radius" value="<?php echo ($info["address"]); ?>" placeholder="" name="address" id="address">
+            </div>
         </div>
         </div>
         <div class="row cl">
@@ -71,8 +107,7 @@
         </div>
 		</div>
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<input class="btn btn-primary radius" type="submit" name="submit" value="保存后关闭">&nbsp;&nbsp;&nbsp;
-        <input class="btn btn-primary radius" type="submit" name="tsubmit" value="继续发表">&nbsp;&nbsp;&nbsp;
+				<input class="btn btn-primary radius" type="submit" name="submit" value="保存">&nbsp;&nbsp;&nbsp;
 				<input class="btn btn-primary radius" onclick="history.go(-1)" value="返回" type="button">
 			</div>
 		</div>

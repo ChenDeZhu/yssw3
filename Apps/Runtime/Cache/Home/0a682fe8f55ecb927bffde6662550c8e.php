@@ -1,8 +1,9 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
-	<title>我的</title>
+	<title>下线资料</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -10,8 +11,8 @@
 	<link rel="stylesheet" href="/Public/Home/Template/app.css">
 	<script src="/Public/Home/Template/fonts/iconfont.js"></script>
 	<style>
-		.my{
-			padding: 30px 0 0 0;
+		.myjs{
+			padding: 0 0 10px 0;
 			margin: 0;
 			overflow: hidden;
 			text-align: center;
@@ -26,77 +27,87 @@
 			-webkit-backface-visibility: hidden;
 			backface-visibility: hidden;
 		}
-		.my dl{
-			padding: 10px 0 0 0;
+		.myjs dl{
+			padding:0 ;
 			margin: 0;
-			overflow: hidden;
 			text-align: center;
-			color: #fff;
-			line-height: 25px;
-		}
-		.my dl dt{
-			padding:0;
-			margin: 0;
 			overflow: hidden;
-			font-weight: 900;
-			font-size: 20px;
 		}
-		.my dl dd{
-			padding:0;
-			margin: 10px 0 0 0;
-			overflow: hidden;
-			font-size: 14px;
-		}
-		.my .headportrait{
-			padding: 5px;
-			margin: 0;
-			overflow: hidden;
-			width: 20%;
-			background: #fff;
-		}
-		.my ul{
+		.myjs dl dt{
 			padding: 0;
-			border-top: rgba(0, 92, 214, 0.69) 1px solid ;
-			margin: 30px 0 0 0;
-			line-height: 40px;
 			overflow: hidden;
-			text-align: center;
+			font-size: 18px;
+			font-weight: 300;
 			color: #fff;
 		}
-		.my ul a{ color: #fff;}
-		.my ul li{
-			padding:0;
+		.myjs dl dd{
+			padding: 0;
 			margin: 0;
 			overflow: hidden;
-			float: left;
-			width: 25%;
-			font-size: 14px;
-			border-left: rgba(0, 92, 214, 0.69) 1px solid ;
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 25px;
+			color: #fff;
 		}
-/* 收入表 */
+		.myjs .xxi{
+			width: 25%;
+			padding: 70px 0 0 0;
+			float: left;
+		}
+		.myjs .xxi dt{
+			margin: 0 0 10px 0;
+		}
+		.myjs .txiuao{
+			width: 50%;
+			padding: 25px 0 0 0;
+			float: left;
+		}
+		.myjs .txiuao dt{
+			margin: 0 0 10px 0;
+		}
+		.myjs .txiuao .headportrait{width: 50%}
+		.myjs .txiuao dd{
+			font-size: 12px;
+			font-weight: 300;
+			line-height: 12px;
+			color: #fff;
+		}
+		.myjs .txiuao dd b{
+			font-size: 20px;
+			color: #fff;
+			line-height: 30px;
+		}
+
 		.shijian{
 			position: absolute;
 			top: 10px;
 			right: 15px;
-			font-size: 12px;
+			font-size: 14px;
 			font-weight: 400;
 			color: #8f8f94;
 		}
-		.xiaoxi{
-			position: absolute;
-			top: 8px;
-			left: 45px;
-			font-size: 10px;
-			font-weight: 300;
-			line-height: 18px;
-			color: #fff;
-			background: #ff0000;
-			width: 18px;
-			height: 18px;
-			text-align: center;
-			-moz-border-radius: 50%;
-			-webkit-border-radius: 50%;
-			border-radius:50%;
+		.mui-badge-danger .iconfont{font-size: 10px}
+		/* 打电话 */
+		.sms{
+			padding: 20px 0 10px 0;
+			margin: 0;
+			overflow: hidden;
+		}
+		.sms ul{
+			padding: 0;
+			margin: 0 10%;
+			overflow: hidden;
+		}
+		.sms ul li{
+			padding:0;
+			margin: 0 1%;
+			float: left;
+			width: 48%;
+			overflow: hidden;
+		}
+		.sms ul li button{
+			font-size: 20px;
+			width: 100%;
 		}
 		.shijian b{
 			color: #ff0000;
@@ -105,55 +116,24 @@
 	</style>
 </head>
 <body>
-<!-- header class="mui-bar mui-bar-nav"></header -->
 <div class="mui-content topws">
-	<div class="my">
-		<img class="headportrait round" <?php if($user['img'] == null): ?>src="/Public/Home/Template/images/headportrait.jpg" <?php else: ?> src="<?php echo ($user['img']); ?>"<?php endif; ?>>
-		<dl>
-			<dt><?php echo ($user["name"]); ?></dt>
-			<dd><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close_up_mode"></use></svg> 积分 <?php echo ($user["score"]); ?>
-				<svg class="icon" aria-hidden="true"><use xlink:href="#icon-debt"></use></svg> 余额 &yen; <?php echo ($user["money"]); ?>
-				<svg class="icon" aria-hidden="true"><use xlink:href="#icon-portrait_mode"></use></svg> 普通会员</dd>
+	<div class="myjs">
+		<dl class="xxi">
+			<dt>推广人数</dt>
+			<dd><?php echo ($count); ?>人</dd>
 		</dl>
-		<ul>
-			<a href="<?php echo U('account');?>"><li>我的账户</li></a>
-			<a href="<?php echo U('update_members');?>"><li>会员信息</li></a>
-			<a href="<?php echo U('addvip');?>"><li>升级帐号</li></a>
-			<a href="<?php echo U('service');?>"><li>客服中心</li></a>
-		</ul>
+		<dl class="txiuao">
+			<dt><img class="headportrait round" <?php if($other['img'] == null): ?>src="/Public/Home/Template/images/headportrait.jpg" <?php else: ?> src="<?php echo ($other['img']); ?>"<?php endif; ?>></dt>
+			<dd><b><?php echo ($other["name"]); ?></b><br><?php echo ($other["province"]); ?> <?php echo ($other["city"]); echo ($other["area"]); ?></dd>
+		</dl>
+		<dl class="xxi">
+			<dt>推广经理</dt>
+			<dd><?php echo ($other["tname"]); ?></dd>
+		</dl>
 	</div>
 
-	<ul class="mui-table-view topes">
-		<li class="mui-table-view-cell">
-			<a class="mui-navigate-right" href="<?php echo U('add_information');?>">
-				<svg class="icon" aria-hidden="true"><use xlink:href="#icon-edit_image"></use></svg> 发布
-			</a>
-		</li>
-		<li class="mui-table-view-cell">
-			<a class="mui-navigate-right" href="<?php echo U('myPush');?>">
-				<svg class="icon" aria-hidden="true"><use xlink:href="#icon-list"></use></svg> 我发布的信息
-			</a>
-		</li>
-		<li class="mui-table-view-cell">
-			<a class="mui-navigate-right" href="<?php echo U('readme');?>">
-				<svg class="icon" aria-hidden="true"><use xlink:href="#icon-binoculars"></use></svg> 阅览过我的信息
-			</a>
-		</li>
-		<li class="mui-table-view-cell">
-			<a class="mui-navigate-right" href="<?php echo U('my_footprint');?>">
-				<svg class="icon" aria-hidden="true"><use xlink:href="#icon-podium_with_audience"></use></svg> 我阅览过的信息
-			</a>
-		</li>
-	</ul>
 
-	<ul class="mui-table-view topes">
-		<li class="mui-table-view-cell">
-			<a class="mui-navigate-right" href="<?php echo U('promote');?>">
-				<svg class="icon" aria-hidden="true"><use xlink:href="#icon-genealogy"></use></svg> 我的推广
-			</a>
-		</li>
-	</ul>
-	<div class="theme"><dl><dt>我的推广记录</dt><dd><samp>MY Extension</samp></dd></dl></div>
+	<div class="theme"><dl><dt>推广记录</dt><dd><samp>MY Extension</samp></dd></dl></div>
 	<ul class="mui-table-view mui-table-view-chevron">
 		<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
 			<a href="<?php echo U('extension_content',array('uid'=>$vo['uid']));?>">

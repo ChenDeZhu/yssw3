@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>我的机器</title>
+		<title>转租列表</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -84,50 +84,33 @@
 	<header class="mui-bar mui-bar-nav">
 		<div class="type">
 			<ul>
-				<a href="rentto.html" class="no"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
-				<a href="rentto.html"><li>类别</li></a>
+			<volist name='clist' id='vo'>
+				<a href="{:U('Information/rentto',array('cid'=>$vo['cid']))}" <if condition="$cid eq $vo['cid']"> class="no" </if>><li>{$vo.name}</li></a>
+			</volist>
+
 			</ul>
 		</div>
 	</header>
 	<div class="mui-content topws">
 
 		<ul class="mui-table-view mui-table-view-chevron productlb">
-
+		<volist name="list" id="vo">
 			<li class="mui-table-view-cell mui-media">
-				<span class="shijian">&yen <b>2000.00</b></span>
-				<a class="mui-navigate-right" href="product_content.html">
-					<img class="mui-media-object mui-pull-left" src="__MUI__/images/p-5.jpg">
+				<span class="shijian">&yen; <b>{$vo.price}</b></span>
+				<a class="mui-navigate-right" href="{:U('Information/detail',array('id'=>$vo['id']))}">
+					<img class="mui-media-object mui-pull-left" <if condition="$vo['img'] neq null">src="{$vo['img']}"<else/> src="__MUI__/images/p-5.jpg"</if>>
 					<div class="mui-media-body">
-						转让信息
+						{$vo.title}
 						<div class="parameter">
-							<dl><dt>频道</dt><dd>转让</dd></dl>
-							<dl><dt>类别</dt><dd>厂房</dd></dl>
-							<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
+							<dl><dt>频道</dt><dd>{$vo.tname}</dd></dl>
+							<dl><dt>类别</dt><dd>{$vo.cname}</dd></dl>
+							<dl><dt>日期</dt><dd>{$vo.update|date="Y年m月d日",###}</dd></dl>
 						</div>
 					</div>
 				</a>
 			</li>
-			<li class="mui-table-view-cell mui-media">
-				<span class="shijian">&yen <b>2000.00</b></span>
-				<a class="mui-navigate-right" href="product_content.html">
-					<img class="mui-media-object mui-pull-left" src="__MUI__/images/p-6.jpg">
-					<div class="mui-media-body">
-						出租信息
-						<div class="parameter">
-							<dl><dt>频道</dt><dd>出租</dd></dl>
-							<dl><dt>类别</dt><dd>房子</dd></dl>
-							<dl><dt>日期</dt><dd>2016年6月06日</dd></dl>
-						</div>
-					</div>
-				</a>
-			</li>
+		</volist>
+			
 		</ul>
 	</div>
 <div class="mui-bar mui-bar-tab">

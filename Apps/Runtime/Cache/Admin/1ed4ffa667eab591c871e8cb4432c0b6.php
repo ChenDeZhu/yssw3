@@ -32,35 +32,56 @@
 
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 网站设置<span class="c-gray en">&gt;</span> 公司信息 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 <article class="page-container">
-  <form action="<?php echo U('Website/pupt');?>" method="post" class="form form-horizontal" id="form-member-add" onsubmit="return check()">
+  <!-- <form action="<?php echo U('Website/pupt');?>" method="post" class="form form-horizontal" id="form-member-add" onsubmit="return check()"> -->
+  <form action="<?php echo U('Website/pupt');?>" method="post" class="form form-horizontal" id="form-member-add">
+  <input type="hidden" name="id" value="1">
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>公司名称：</label>
       <div class="formControls col-xs-5 col-sm-6">
-        <input type="text" class="input-text radius" value="<?php echo ($pro["company"]); ?>" name="company" id="company">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["name"]); ?>" name="name" id="name">
       </div>
     </div>
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系人：</label>
       <div class="formControls col-xs-5 col-sm-6">
-        <input type="text" class="input-text radius" value="<?php echo ($pro["contacts"]); ?>" name="contacts" id="contacts">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["person"]); ?>" name="person" id="person">
       </div>
     </div>
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系电话：</label>
       <div class="formControls col-xs-5 col-sm-6">
-        <input type="text" class="input-text radius" value="<?php echo ($pro["phone"]); ?>" name="phone" id="phone" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["mobile"]); ?>" name="mobile" id="mobile" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')">
       </div>
     </div>
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
       <div class="formControls col-xs-5 col-sm-6">
-        <input type="text" class="input-text radius" value="<?php echo ($pro["emil"]); ?>" name="emil" id="emil">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["email"]); ?>" name="email" id="email">
       </div>
     </div>
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>QQ：</label>
       <div class="formControls col-xs-5 col-sm-6">
         <input type="text" class="input-text radius" value="<?php echo ($pro["qq"]); ?>" name="qq" id="qq" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>推广所得积分：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["score"]); ?>" name="score" id="score" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')">
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>推广所得金额：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <input type="text" class="input-text radius" value="<?php echo ($pro["money"]); ?>" name="money" id="money" onkeyup="this.value=this.value.replace(/[^\d]/ig,'')">
+      </div>
+    </div>
+    
+    <div class="row cl">
+      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>公告显示：</label>
+      <div class="formControls col-xs-5 col-sm-6">
+        <textarea class="textarea-text radius" name="notice" id="notice" rows="4" style="width: 40%; border-color: #ddd; font-size: 14px"><?php echo ($pro["notice"]); ?></textarea> 
       </div>
     </div>
     <div class="row cl">
@@ -84,7 +105,7 @@
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>公司介绍：</label>
       <div class="formControls col-xs-5 col-sm-6">
-        <script id="editor" type="text/plain" style="width:800px;height:400px;"><?php echo ($pro["profiles"]); ?></script>
+        <script id="editor" type="text/plain" style="width:800px;height:400px;"><?php echo ($pro["content"]); ?></script>
       </div>
     </div>
       <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3" style="margin-top:20px; margin-bottom: 20px;">
@@ -95,48 +116,43 @@
 </article>
 <script type="text/javascript">
 function check(){
-    if($('#company').val() == ''){
-       alert('请填写公司名称！');
-       $('#company').focus();
+    if($('#name').val() == ''){
+       layer.msg('请填写公司名称！');
+       $('#name').focus();
        return false; 
     }
-    if($('#contacts').val() == ''){
-       alert('请填写联系人！');
-       $('#contacts').focus();
+    if($('#person').val() == ''){
+       layer.msg('请填写联系人！');
+       $('#person').focus();
        return false; 
     }
-    if($('#phone').val() == ''){
-       alert('请填写联系电话！');
-       $('#phone').focus();
+    if($('#mobile').val() == ''){
+       layer.msg('请填写联系电话！');
+       $('#mobile').focus();
        return false; 
     }
-    if($('#emil').val() == ''){
-       alert('请填写emil！');
-       $('#emil').focus();
+    if($('#email').val() == ''){
+       layer.msg('请填写email！');
+       $('#email').focus();
        return false; 
     }
     if($('#qq').val() == ''){
-       alert('请填写qq！');
+       layer.msg('请填写qq！');
        $('#qq').focus();
        return false; 
     }
     if($('#address').val() == ''){
-       alert('请填写公司地址！');
+       layer.msg('请填写公司地址！');
        $('#address').focus();
        return false; 
     }
     if($('#keywords').val() == ''){
-       alert('请填写SEO关键字！');
-       $('#keywords').focus();
-       return false; 
-    }
-    if($('#keywords').val() == ''){
-       alert('请填写SEO关键字！');
+       layer.msg('请填写SEO关键字！');
        $('#keywords').focus();
        return false; 
     }
     if(UE.getEditor('editor').getContent() == ''){
-        alert('简介不能为空！');
+        layer.msg('简介不能为空！');
         UE.getEditor('editor').isFocus();
         return false;
     }

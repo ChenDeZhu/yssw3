@@ -70,33 +70,34 @@
 
 
 			<form class="mui-input-group topes">
+		
 				<div class="mui-input-row">
-					<label>帐号</label>
-					<input type="text" placeholder="请输入您的帐号">
+					<label>手机号</label>
+					<input type="text" placeholder="请输入您的帐号" value="<?php echo ($user["mobile"]); ?>" id="mobile">
 				</div>
 				<div class="mui-input-row">
 					<label>密码</label>
-					<input type="text" placeholder="请输入您的密码">
+					<input type="text" placeholder="不填则不修改" id="pwd">
 				</div>
 				<div class="mui-input-row">
 					<label>微信</label>
-					<input type="text" placeholder="请输入您的微信号">
+					<input type="text" placeholder="请输入您的微信号" value="<?php echo ($user["wechat"]); ?>" id="wechat">
 				</div>
 				<div class="mui-input-row">
 					<label>QQ</label>
-					<input type="text" placeholder="请输入您的QQ号">
+					<input type="text" placeholder="请输入您的QQ号" value="<?php echo ($user["qq"]); ?>" id="qq">
 				</div>
 				<div class="mui-input-row">
 					<label>地址</label>
-					<input type="text" placeholder="请输入您的密码">
+					<input type="text" placeholder="请输入您的地址" value="<?php echo ($user["address"]); ?>" id="address">
 				</div>
 				<div class="mui-input-row">
 					<label>公司</label>
-					<input type="text" placeholder="请输入您的当前公司名称">
+					<input type="text" placeholder="请输入您的当前公司名称" value="<?php echo ($user["gname"]); ?>" id="gname">
 				</div>
 				<div class="mui-button-row">
-					<button type="button" class="mui-btn mui-btn-primary" onclick="return false;">确认修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" class="mui-btn mui-btn-danger" onclick="return false;">取消修改</button>
+					<button type="button" class="mui-btn mui-btn-primary" id="updatem">确认修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="mui-btn mui-btn-danger" onclick="window.history.back();">取消修改</button>
 				</div>
 			</form>
 		</div>
@@ -115,7 +116,27 @@
         //测试代码
         mui('body').on('tap','a',function(){window.top.location.href=this.href;});
         //微信代码
-       
+        mui('#updatem')[0].addEventListener('tap',function(){
+        	var postdate = {};
+        	postdate['uid'] = <?php echo ($user["uid"]); ?>;
+        	postdate['mobile'] = mui('#mobile')[0].value;
+        	postdate['pwd'] = mui('#pwd')[0].value;
+        	postdate['wechat'] = mui('#wechat')[0].value;
+        	postdate['qq'] = mui('#qq')[0].value;
+        	postdate['address'] = mui('#address')[0].value;
+        	postdate['gname'] = mui('#gname')[0].value;
+        	mui.post("<?php echo U('update_members');?>",postdate,function(res){
+					if(res==1){
+						mui.toast('修改成功');
+
+					}else{
+						mui.toast('系统繁忙，请稍后再试');
+					}
+				},'json'
+			);
+        });
+        
+        
 	</script>
 	<div style="display: none">统计代码</div>
 	</body>

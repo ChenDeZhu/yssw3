@@ -9,6 +9,7 @@ class UserController extends BaseController{
 		$user = M('user')->find($uid);
 		$this->assign('user',$user);
 	}
+	//个人信息主页
 	public function my(){
 		//判断是否注册过
 		$this->isLogin();
@@ -16,6 +17,7 @@ class UserController extends BaseController{
 		$uid = $_SESSION['uid'];
 		//获取该用户的推广记录
 		$list = $M->where('tid='.$uid)->field('uid,name,img,reg_time')->order('reg_time desc')->select();
+		// var_dump($list);exit;
 		$this->assign('list',$list);
 		$this->display();
 	}
@@ -70,7 +72,7 @@ class UserController extends BaseController{
 			$list[$k]['tname'] = getTypeName($v['type']);
 		}
 		$this->assign('list',$list);
-		// var_dump($list);exit;
+		
 		$this->display();
 	}
 
@@ -93,25 +95,116 @@ class UserController extends BaseController{
 	//账户
 	public function account(){
 		$this->isLogin();
-
+		// var_dump(time());exit;
+		$uid = $_SESSION['uid'];
+		$list = M('money_detail')->where('uid='.$uid)->field('addtime,money,type')->order('addtime desc')->select();
+		// $type = array(
+		// 	'0'=>'充值',
+		// 	'1'=>'消费',
+		// 	'2'=>'提现',
+		// 	'3'=>'获取推广佣金'
+		// 	);
+		// foreach ($list as $k => $v) {
+		// 	$list[$k]['type'] = $type[$v['type']];
+		// }
+		// var_dump($list);exit;
+		$this->assign('list',$list);
 		$this->display();
 	}
 	//更新会员信息
 	public function update_members(){
 		$this->isLogin();
+		if(IS_POST){
+			$data = $_POST;
 
-		$this->display();
+			if($data['pwd']){
+				$data['pwd'] = md5($data['pwd']);
+			}
+			// var_dump($data);exit;
+			$res = M('user')->save($data);
+			if($res!==false){
+				$this->ajaxReturn(1);
+			}else{
+				$this->ajaxReturn(0);
+			}
+		}else{
+			
+			$this->display();
+		}
 	}
 	//开通VIP
 	public function addvip(){
 		$this->isLogin();
-
-		$this->display();
-	}
+		if(IS_POST){
+			$data = $_POST;
+			$M = M('company');
+			if($data['gid']){
+				$res = $M->save($data);
+				if($res){
+					$this->ajaxReturn(1);
+				}else{
+					$this->ajaxReturn(2);
+				}
+			}
+			
+			$res = $M->add($data);
+			if($res!==false){
+				$this->ajaxReturn(1);
+			}else{
+				$this->ajaxReturn(0);
+			}
+		}else{
+			$uid = $_SESSION['uid'];
+			$company = M('company')->where('uid='.$uid)->find();
+			if($company){
+				$this->assign('company',$company);
+			}
+			$this->display();
+		}
+}
 	//客服
 	public function service(){
 		$this->isLogin();
 		
 		$this->display();
 	}
+	//自己推广下线的内容
+	public function extension_content(){
+		$this->isLogin();
+		$uid = I('get.uid');
+		$M = M('user');
+		$map['a.uid'] = $uid;
+		$other = $M->alias('a')->where($map)
+		->join("__USER__ b on b.uid = a.tid")->field('a.name,a.province,a.city,a.area,b.name as tname,a.img')->find();
+		$count = $M->where('tid='.$uid)->count();
+		//获取该用户的推广一级推广记录
+		$list = $M->where('tid='.$uid)->field('uid,name,img,reg_time')->order('reg_time desc')->select();
+		$this->assign('other',$other);
+		$this->assign('count',$count);
+		$this->assign('list',$list);
+		$this->display();
+	}
+	//发布信息
+	public function addinfo(){
+		if(IS_POST){
+			$data= $_POST;
+			$res = M('information')->add($data);
+			if($res){
+				$this->ajaxReturn(1);
+			}else{
+				$this->ajaxReturn(0);
+			}
+		}else{
+			$this->isLogin();
+			$type = I('get.type');
+			$name = getTypeName($type);
+			$clist = M('cate')->where('type='.$type)->select();
+			$this->assign('clist',$clist);
+			$this->assign('type',$type);
+			$this->assign('name',$name);
+			$this->display();
+		}
+	}
+
+
 }
