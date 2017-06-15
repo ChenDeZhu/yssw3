@@ -13,13 +13,15 @@ class IndexController extends BaseController{
 		}
 
 		//这里要获取轮播图 滚动公告
-		$info = M('setting')->field('lunbo,notice')->find(1);
-		$img = explode(',', $info['lunbo']);
-		$I = M('images');
-		foreach ($img as $k => $v) {
-			$lunbo[] = $I->where('id=.'$v)->getField('savepath');
-		}
-		$this->assign('lunbo',$lunbo);
+		$info = M('setting')->field('img_id,notice')->find(1);
+		if($info['img_id']){
+                $image = M("images");
+                $map['id']=array('in',$info['img_id']);
+                $img_info = $image->where($map)->order('id asc')->select();
+                $this->assign("img_info", $img_info);
+            }
+
+		$this->assign('info',$info);
 		$this->assign('list',$list);
 		$this->display();
 	}

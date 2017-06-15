@@ -53,8 +53,12 @@ class UserController extends BaseController{
 		foreach ($list as $k => $v) {
 			$list1[] =$M->alias('a')->where('a.tid='.$v['uid'])->join('__USER__ b on a.tid = b.uid ')->field('a.uid,a.name,a.reg_time,a.img,b.name as tname')->order('a.reg_time desc')->select(); 
 		}
-
+		//取得推广佣金
+		$where['uid'] = $uid;
+		$where['type'] = 3;
+		$tmoney = M('money_detail')->field('money')->where($where)->sum('money');
 		$this->assign('list',$list);
+		$this->assign('tmoney',$tmoney);
 		$this->assign('list1',$list1);
 		$this->assign('count',$count);
 		$this->display();
@@ -95,19 +99,8 @@ class UserController extends BaseController{
 	//账户
 	public function account(){
 		$this->isLogin();
-		// var_dump(time());exit;
 		$uid = $_SESSION['uid'];
 		$list = M('money_detail')->where('uid='.$uid)->field('addtime,money,type')->order('addtime desc')->select();
-		// $type = array(
-		// 	'0'=>'充值',
-		// 	'1'=>'消费',
-		// 	'2'=>'提现',
-		// 	'3'=>'获取推广佣金'
-		// 	);
-		// foreach ($list as $k => $v) {
-		// 	$list[$k]['type'] = $type[$v['type']];
-		// }
-		// var_dump($list);exit;
 		$this->assign('list',$list);
 		$this->display();
 	}
@@ -206,5 +199,18 @@ class UserController extends BaseController{
 		}
 	}
 
-
+	public function user_work_experience(){
+		if(IS_POST){
+			$data = $_POST;
+			
+			$res = M('user')->save($_POST);
+			if($res!==false){
+				$this->ajaxReturn(1);
+			}else{
+				$this->ajaxReturn(0);
+			}
+		}else{
+			$this->display();
+		}
+	}
 }

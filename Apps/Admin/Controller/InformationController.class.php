@@ -51,14 +51,28 @@ class InformationController extends BaseController{
 	//添加逻辑
 	public function insert(){
 		$M = M('information');
+		$M_image = M('images');
 		$data = I('post.');
-		$data['content'] = htmlspecialchars_decode($data['editorValue']);
+		$data['content'] = htmlspecialchars_decode($data['content']);
 		$data['addtime'] = time();
 		$data['updatetime'] = $data['addtime'];
+		unset($data['editorValue']);
+		if($data['lunbo']){
+		 	if(is_array($data['lunbo'])){
 
+                $image_id=array();
+                foreach($data['lunbo'] as $k=>$v){
+                    $img_data['savepath']=$v;
+                    if($v)
+                    $image_id[$k]=$M_image->add($img_data);
+                }
+                $data['img_id']=implode(',',$image_id);
+            }
+        }
 		$res = $M->add($data);
 		if($res){
 			if(!empty($_FILES['img']['tmp_name'])){
+				
 	            $info = $this->uploadfile($_FILES);
 	            if(!empty($info)){
 	                //处理logo
@@ -73,9 +87,7 @@ class InformationController extends BaseController{
 		        }
 	  		}
 	  		//添加轮播图
-	  		if(!empty($_FILES['lunbo'])){
-
-	  		}
+	  		
 	  		$this->success('添加成功！',U('information/index',array('type'=>$data['type'])));
 	  		
         }else{
@@ -90,6 +102,13 @@ class InformationController extends BaseController{
 		$name = getTypeName($type);
 		$clist = M('cate')->where(array('type'=>$type))->select();
 		$ulist = M('user')->field('uid,name')->select();
+		if($info['img_id']){
+                $image = M("images");
+                $map['id']=array('in',$info['img_id']);
+                $img_info = $image->where($map)->order('id asc')->select();
+                $this->assign("img_info", $img_info);
+            }
+            // var_dump($img_info);exit;
 		$this->assign('ulist',$ulist);
 		$this->assign('clist',$clist);
 		$this->assign('type',$type);
@@ -99,10 +118,30 @@ class InformationController extends BaseController{
     }
     //编辑逻辑
     public function update(){
+    	$M = M('information');
     	$data          = I('post.');
 		$data['updatetime'] = time();
-		$data['content'] = htmlspecialchars_decode($data['editorValue']);
-		$res           = M('information')->where('id='.$data['id'])->save($data);
+		$data['content'] = htmlspecialchars_decode($data['content']);
+		//多图上传
+		$M_image = M("images");
+            $map['id']=$data['id'];
+            $image_ids=$M->where($map)->getField('img_id');
+            $image_map['id']=array('in',$image_ids);
+            $M_image->where($image_map)->delete();
+            $data['img_id']='';
+            $image = $data['lunbo'];
+            if($image){
+            if(is_array($image)){
+                $image_id=array();
+                foreach($image as $k=>$v){
+                    $img_data['savepath']=$v;
+                    if($v)
+                    $image_id[$k]=$M_image->add($img_data);
+                }
+                $data['img_id']=implode(',',$image_id);
+            }
+        }
+		$res = $M->where('id='.$data['id'])->save($data);
 		if($res){
 			if(!empty($_FILES['img']['tmp_name'])){
 				$info = $this->uploadfile($_FILES);

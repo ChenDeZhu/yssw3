@@ -73,8 +73,8 @@
 					<input type="text" placeholder="请输入金额">
 				</div>
 				<div class="mui-button-row">
-					<button type="button" class="mui-btn mui-btn-primary" onclick="return false;">充值账户</button>&nbsp;&nbsp;
-					<button type="button" class="mui-btn mui-btn-danger" onclick="return false;">余额提现</button>
+					<button type="button" class="mui-btn mui-btn-primary recharge">充值账户</button>&nbsp;&nbsp;
+					<button type="button" class="mui-btn mui-btn-danger withdrawals">余额提现</button>
 				</div>
 			</form>
 			<ul class="mui-table-view topes">
@@ -111,6 +111,16 @@
         //测试代码
         mui('body').on('tap','a',function(){window.top.location.href=this.href;});
         //微信代码
+        //充值操作
+        mui('.recharge')[0].addEventListener('tap',function(){
+        	mui.toast('系统繁忙，请稍后再试1');
+        })
+        //提现操作
+        mui('.withdrawals')[0].addEventListener('tap',function(){
+        	mui.toast('系统繁忙，请稍后再试2');
+        })
+        
+        
 	</script>
 	<div style="display: none">统计代码</div>
 	</body>

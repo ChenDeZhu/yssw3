@@ -73,7 +73,17 @@
                 <img id="preview2" src="<?php echo ($info["img"]); ?>"  style="display: block; width: 100%">
             </div>
         </div>
-        
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>详情图(4张)：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <button type="button" id="j_upload_img_btn" class="btn btn-primary radius">上传详情图</button> 
+                <ul id="upload_img_wrap">
+                    <?php if(is_array($img_info)): $i = 0; $__LIST__ = $img_info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><img src="<?php echo ($vo["savepath"]); ?>" height="150"></li>
+                    <input type="hidden" name="lunbo[]" value="<?php echo ($vo["savepath"]); ?>"><?php endforeach; endif; else: echo "" ;endif; ?>
+                </ul>
+                <textarea id="uploadEditor" style="display: none;"></textarea>
+            </div>
+        </div>
          <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系人：</label>
             <div class="formControls col-xs-5 col-sm-6">
@@ -102,7 +112,7 @@
         <div class="row cl">
           <label class="form-label col-xs-4 col-sm-3">详细内容：</label>
           <div class="formControls col-xs-5 col-sm-6">
-            <script id="editor" type="text/plain" style="width:800px;height:400px;"><?php echo ($info["content"]); ?></script>
+            <textarea name="content" id='content'><?php echo ($info["content"]); ?></textarea>
           </div>
         </div>
 		</div>
@@ -182,115 +192,52 @@ function check(){
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.admin.js"></script> 
 <script type="text/javascript">
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-    var ue = UE.getEditor('editor');
-    function isFocus(e){
-        alert(UE.getEditor('editor').isFocus());
-        UE.dom.domUtils.preventDefault(e)
-    }
-    function setblur(e){
-        UE.getEditor('editor').blur();
-        UE.dom.domUtils.preventDefault(e)
-    }
-    function insertHtml() {
-        var value = prompt('插入html代码', '');
-        UE.getEditor('editor').execCommand('insertHtml', value)
-    }
-    function createEditor() {
-        enableBtn();
-        UE.getEditor('editor');
-    }
-    function getAllHtml() {
-        alert(UE.getEditor('editor').getAllHtml())
-    }
-    function getContent() {
-        var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getContent());
-        alert(arr.join("\n"));
-    }
-    function getPlainTxt() {
-        var arr = [];
-        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getPlainTxt());
-        alert(arr.join('\n'))
-    }
-    function setContent(isAppendTo) {
-        var arr = [];
-        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
-        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
-        alert(arr.join("\n"));
-    }
-    function setDisabled() {
-        UE.getEditor('editor').setDisabled('fullscreen');
-        disableBtn("enable");
-    }
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
+</script>
+<script type="text/javascript">
 
-    function setEnabled() {
-        UE.getEditor('editor').setEnabled();
-        enableBtn();
-    }
+    // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
+ var uploadEditor = UE.getEditor("uploadEditor", {
+        isShow: false,
+        focus: false,
+        enableAutoSave: false,
+        autoSyncData: false,
+        autoFloatEnabled:false,
+        wordCount: false,
+        sourceEditor: null,
+        scaleEnabled:true,
+        toolbars: [["insertimage"]]
+    });
 
-    function getText() {
-        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-        var range = UE.getEditor('editor').selection.getRange();
-        range.select();
-        var txt = UE.getEditor('editor').selection.getText();
-        alert(txt)
-    }
+    // 监听多图上传和上传附件组件的插入动作
+ uploadEditor.ready(function () {
+        uploadEditor.addListener("beforeInsertImage", _beforeInsertImage);
+        
+    });
 
-    function getContentTxt() {
-        var arr = [];
-        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-        arr.push("编辑器的纯文本内容为：");
-        arr.push(UE.getEditor('editor').getContentTxt());
-        alert(arr.join("\n"));
-    }
-    function hasContent() {
-        var arr = [];
-        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-        arr.push("判断结果为：");
-        arr.push(UE.getEditor('editor').hasContents());
-        alert(arr.join("\n"));
-    }
-    function setFocus() {
-        UE.getEditor('editor').focus();
-    }
-    function deleteEditor() {
-        disableBtn();
-        UE.getEditor('editor').destroy();
-    }
-    function disableBtn(str) {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-            if (btn.id == str) {
-                UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-            } else {
-                btn.setAttribute("disabled", "true");
-            }
+    // 自定义按钮绑定触发多图上传和上传附件对话框事件
+ document.getElementById('j_upload_img_btn').onclick = function () {
+        var dialog = uploadEditor.getDialog("insertimage");
+        dialog.title = '多图上传';
+        dialog.render();
+        dialog.open();
+    };
+
+
+
+    // 多图上传动作
+ function _beforeInsertImage(t, result) {
+        var imageHtml = '';
+        for(var i in result){
+            imageHtml += '<li><img src="'+result[i].src+'" height="150"></li>';
+            imageHtml +='<input type="hidden" name="lunbo[]" value="'+result[i].src+'">';
         }
-    }
-    function enableBtn() {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-        }
+        document.getElementById('upload_img_wrap').innerHTML = imageHtml;
     }
 
-    function getLocalData () {
-        alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
-    }
 
-    function clearLocalData () {
-        UE.getEditor('editor').execCommand( "clearlocaldata" );
-        alert("已清空草稿箱")
-    }
 </script>
 
 

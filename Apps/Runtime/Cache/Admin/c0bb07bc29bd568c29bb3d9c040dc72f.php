@@ -38,7 +38,7 @@
                     <option value="0">顶级栏目</option>
                     	<?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo['cid']); ?>">
                         |
-                        <?php $__FOR_START_3471__=0;$__FOR_END_3471__=$vo['Count'];for($i=$__FOR_START_3471__;$i < $__FOR_END_3471__;$i+=1){ ?>--<?php } ?>
+                        <?php $__FOR_START_3406__=0;$__FOR_END_3406__=$vo['Count'];for($i=$__FOR_START_3406__;$i < $__FOR_END_3406__;$i+=1){ ?>--<?php } ?>
  						<?php echo ($vo['name']); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                   </select>
                 </span>

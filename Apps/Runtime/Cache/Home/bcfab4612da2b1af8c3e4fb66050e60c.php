@@ -215,10 +215,10 @@
 				
 				<div class="describeimg">
 					<ul>
-						<li><img src="/Public/Home/Template/images/p-1.jpg"></li>
-						<li><img src="/Public/Home/Template/images/p-2.jpg"></li>
+					<?php if(is_array($img_info)): $i = 0; $__LIST__ = $img_info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><img src="<?php echo ($vo["savepath"]); ?>"></li>
+						<!-- <li><img src="/Public/Home/Template/images/p-2.jpg"></li>
 						<li><img src="/Public/Home/Template/images/p-3.jpg"></li>
-						<li><img src="/Public/Home/Template/images/p-4.jpg"></li>
+						<li><img src="/Public/Home/Template/images/p-4.jpg"></li> --><?php endforeach; endif; else: echo "" ;endif; ?>
 					</ul>
 				</div>
 				<div class="data">
@@ -227,15 +227,15 @@
 					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cell_phone"></use></svg> 手机</dt><dd><?php echo ($info["mobile"]); ?></dd></dl>
 					<dl><dt><svg class="icon" aria-hidden="true"><use xlink:href="#icon-globe"></use></svg> 地址</dt><dd><?php echo ($info["address"]); ?></dd></dl>
 				</div>
-				<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LsCtmRBzqzIa2CnXEhm40ANbqrGlqCaQ"></script>
+				<?php if($info['img'] != null): ?><script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LsCtmRBzqzIa2CnXEhm40ANbqrGlqCaQ"></script>
 				<div class="map">
 					<div id="allmap"></div>
 					<script type="text/javascript">
 						// 百度地图API功能
 						var sContent =
-								"<h4 style='margin:0 0 5px 0;padding:0.2em 0'>陈恩华</h4>" +
-								"<img style='float:right;margin:4px' id='imgDemo' src='/Public/Home/Template/images/p-3.jpg' width='60' height='60''/>" +
-								"<p style='margin:0;line-height:1.5;font-size:13px;'>手机：15355688333<br>地址：浙江 台州 路桥区</p>" +
+								"<h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+"<?php echo ($info["name"]); ?>"+"</h4>" +
+								"<img style='float:right;margin:4px' id='imgDemo' src="+"<?php echo ($info["img"]); ?>"+" width='60' height='60''/>" +
+								"<p style='margin:0;line-height:1.5;font-size:13px;'>手机："+"<?php echo ($info["mobile"]); ?>"+"<br>地址："+"<?php echo ($info["address"]); ?>"+"</p>" +
 								"</div>";
 						var map = new BMap.Map("allmap");
 						var point = new BMap.Point(121.394527,28.578766);
@@ -252,7 +252,7 @@
 							}
 						});
 					</script>
-				</div>
+				</div><?php endif; ?>
 			</div>
 
 		</div>

@@ -209,15 +209,17 @@
 		</style>
 	</head>
 	<body>
+
 		<!-- header class="mui-bar mui-bar-nav"></header -->
-		<div class="mui-content topws">
+		<div class="mui-content topws mui-scroll-wrapper" id="pullrefresh"> 
+			<div class="mui-scroll">
 			<div class="mui-slider carouselad" >
 				<div class="mui-slider-group mui-slider-loop">
-					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="/Public/Home/Template/images/LB-1.jpg"></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="/Public/Home/Template/images/LB-1.jpg"></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="/Public/Home/Template/images/LB-2.jpg"></a></div>
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="/Public/Home/Template/images/company.jpg"></a></div>
+					<?php if(is_array($img_info)): $i = 0; $__LIST__ = $img_info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="mui-slider-item"><a href="#"><img src="<?php echo ($vo['savepath']); ?>"></a></div><?php endforeach; endif; else: echo "" ;endif; ?>
+					<!-- <div class="mui-slider-item"><a href="#"><img src="/Public/Home/Template/images/LB-2.jpg"></a></div>
 					<div class="mui-slider-item"><a href="#"><img src="/Public/Home/Template/images/LB-3.jpg"></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="/Public/Home/Template/images/LB-4.jpg"></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="/Public/Home/Template/images/LB-4.jpg"></a></div> -->
 					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="/Public/Home/Template/images/LB-1.jpg"></a>
 					</div>
 				</div>
@@ -227,14 +229,15 @@
 					<div class="mui-indicator"></div>
 					<div class="mui-indicator"></div>
 				</div>
-				<img class="logo" src="/Public/Home/Template/images/logo.png"></a>
+				<!-- <img class="logo" src="/Public/Home/Template/images/logo.png"></a> -->
 			</div>
 			<div class="notice">
 				<dl>
 					<dt><img src="/Public/Home/Template/images/NOTICE.png"></dt>
-					<dd class="marquee"><div>台州银刷商务服务有限公司微信号开始立刻运营了！</div></dd>
+					<dd class="marquee"><div><?php echo ($info['notice']); ?></div></dd>
 				</dl>
 			</div>
+			
 			<ul class="mui-table-view mui-table-view-chevron productlb topbk">
 			<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
 					<span class="shijian">&yen; <b><?php echo ($vo["price"]); ?></b></span>
@@ -251,6 +254,8 @@
 					</a>
 				</li><?php endforeach; endif; else: echo "" ;endif; ?>
 			</ul>
+			
+		</div>
 		</div>
 		<div class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item  mui-active" href="<?php echo U('index/index');?>"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
@@ -263,7 +268,55 @@
 		<script>
             mui.init({
                 //mui js 代码
+                pullRefresh: {
+					container: '#pullrefresh',
+					
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
             });
+            var count = 0;
+            function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 103)); //参数为true代表没有更多数据了。
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					// mui.post("",{
+					// 		username:'username',
+					// 		password:'password'
+					// 	},function(data){					
+					// 	},'json'
+					// );
+				// 	<li class="mui-table-view-cell mui-media">
+				// 	<span class="shijian">&yen; <b><?php echo ($vo["price"]); ?></b></span>
+				// 	<a class="mui-navigate-right" href="<?php echo U('Information/detail',array('id'=>$vo['id']));?>">
+				// 	<?php if($vo['img'] != null): ?>// 		<img class="mui-media-object mui-pull-left" src="<?php echo ($vo["img"]); ?>">
+				//<?php endif; ?>
+				// 		<div class="mui-media-body">
+				// 			<?php echo ($vo["title"]); ?>
+				// 			<div class="parameter">
+				// 				<dl><dt>频道</dt><dd><?php echo ($vo['tname']); ?></dd></dl>
+				// 				<dl><dt>类别</dt><dd><?php echo ($vo['name']); ?></dd></dl>
+				// 				<dl><dt>日期</dt><dd><?php echo (date("Y-m-d",$vo["updatetime"])); ?></dd></dl>
+				// 			</div>
+				// 		</div>
+				// 	</a>
+				// </li>
+					var title="下拉刷新";
+					var tname = "频道";
+					var name = "类别";
+					var date = "时间";
+					var src = "/Public/Home/Template/images/LB-1.jpg"
+					for (var i = cells.length, len = i + 2; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = '<a class="mui-navigate-right" href="<?php echo U("Information/detail",array("id"=>'+1+'));?>"><img class="mui-media-object mui-pull-left" src="'+src+'"><div class="mui-media-body">'+title+'<div class="parameter"><dl><dt>频道</dt><dd>'+tname+'</dd></dl><dl><dt>类别</dt><dd>'+name+'</dd></dl><dl><dt>日期</dt><dd>'+date+'</dd></dl></div></div></a>';
+						table.appendChild(li);
+					}
+				}, 1500);
+			}
             //测试代码
             mui('body').on('tap','a',function(){window.top.location.href=this.href;});
             //微信代码
@@ -271,7 +324,9 @@
             // document.getElementById('nearby').addEventListener('tap', function() {window.location.href="near_task.html";});
             // document.getElementById('sms').addEventListener('tap', function() {window.location.href="sms_list.html";});
             // document.getElementById('my').addEventListener('tap', function() {window.location.href="my.html";});
+            
 		</script>
+
 		<div style="display: none">统计代码</div>
 	</body>
 </html>

@@ -167,7 +167,7 @@
 		</dl>
 		<dl class="xxi">
 			<dt>推广佣金</dt>
-			<dd>300元</dd>
+			<dd><?php echo ($tmoney); ?>元</dd>
 		</dl>
 	</div>
 
@@ -185,7 +185,7 @@
 	<div class="theme"><dl><dt>推广记录</dt><dd><samp>MY Extension</samp></dd></dl></div>
 	<ul class="mui-table-view mui-table-view-chevron">\
 		<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
-			<a href="extension_content.html">
+			<a href="<?php echo U('extension_content',array('uid'=>$v['uid']));?>">
 				<span class="shijian">&yen;<b>1.00</b></span>
 				<img class="mui-media-object mui-pull-left corners" <?php if($v['img'] == null): ?>src="/Public/Home/Template/images/headportrait.jpg" <?php else: ?> src="<?php echo ($v['img']); ?>"<?php endif; ?>>
 				<div class="mui-media-body">
@@ -195,7 +195,7 @@
 			</a>
 		</li><?php endforeach; endif; else: echo "" ;endif; ?>
 		<?php if(is_array($list1)): $i = 0; $__LIST__ = $list1;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(is_array($vo)): $i = 0; $__LIST__ = $vo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
-				<a href="extension_content.html">
+				<a href="<?php echo U('extension_content',array('uid'=>$v['uid']));?>">
 					<span class="shijian">&yen;<b>1.00</b></span>
 					<img class="mui-media-object mui-pull-left corners"  <?php if($v['img'] == null): ?>src="/Public/Home/Template/images/headportrait.jpg" <?php else: ?> src="<?php echo ($v['img']); ?>"<?php endif; ?>>
 					<div class="mui-media-body">

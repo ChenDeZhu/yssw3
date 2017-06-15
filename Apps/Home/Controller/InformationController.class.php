@@ -25,7 +25,6 @@ class InformationController extends BaseController{
 		$info['tname'] = getTypeName($info['type']);
 		//添加访问信息
 		if($info['uid'] !=$uid){
-
 			$map['uid'] = $uid;
 			$map['fid'] = $id;
 			//查询出之前该用户有没有看过该信息
@@ -45,6 +44,13 @@ class InformationController extends BaseController{
 				//若之前看过 则阅读数加1
 				M('interactive')->where('id='.$iId['id'])->setInc('click');
 			}
+		}
+		//获取多图
+		if($info['img_id']){
+			 $image = M("images");
+                $map['id']=array('in',$info['img_id']);
+                $img_info = $image->where($map)->order('id asc')->select();
+                $this->assign("img_info", $img_info);
 		}
 		$this->assign('info',$info);
 		$this->display();

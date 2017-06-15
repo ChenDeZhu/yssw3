@@ -77,7 +77,6 @@
 					</div>
 				</a>
 			</li><?php endforeach; endif; else: echo "" ;endif; ?>
-			
 		</ul>
 	</div>
 	<div class="mui-bar mui-bar-tab">

@@ -29,16 +29,11 @@
 <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/lang/zh-cn/zh-cn.js"></script>
-
+<script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 网站设置<span class="c-gray en">&gt;</span> 联系我们 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 <article class="page-container">
-  <form action="<?php echo U('Website/cpupt');?>" method="post" class="form form-horizontal" id="form-member-add" onsubmit="return check()">
-    <!-- <div class="row cl">
-      <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系我们：</label>
-      <div class="formControls col-xs-5 col-sm-6">
-        <script id="editor" type="text/plain" style="width:800px;height:400px;"><?php echo F('contacts');?></script>
-      </div>
-    </div> -->
+  <form action="<?php echo U('Website/cpupt');?>" method="post" class="form form-horizontal" id="form-member-add" >
+   
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系我们：</label>
       <div class="formControls col-xs-5 col-sm-6">
@@ -50,18 +45,10 @@
       </div>
     </div>
   </form>
+
+
+
 </article>
-<script type="text/javascript">
-function check(){
-    if(UE.getEditor('editor').getContent() == ''){
-        alert('内容不能为空！');
-        UE.getEditor('editor').isFocus();
-        return false;
-    }
-    return true;
-}
-</script>
-<script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Lib/layer/2.1/layer.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.admin.js"></script> 

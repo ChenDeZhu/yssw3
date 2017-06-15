@@ -169,7 +169,7 @@
 		</dl>
 		<dl class="xxi">
 			<dt>推广佣金</dt>
-			<dd>300元</dd>
+			<dd>{$tmoney}元</dd>
 		</dl>
 	</div>
 
@@ -188,7 +188,7 @@
 	<ul class="mui-table-view mui-table-view-chevron">\
 		<volist name="list" id="v">
 		<li class="mui-table-view-cell mui-media">
-			<a href="extension_content.html">
+			<a href="{:U('extension_content',array('uid'=>$v['uid']))}">
 				<span class="shijian">&yen;<b>1.00</b></span>
 				<img class="mui-media-object mui-pull-left corners" <if condition="$v['img'] eq null"> src="__MUI__/images/headportrait.jpg" <else /> src="{$v['img']}" </if>>
 				<div class="mui-media-body">
@@ -201,7 +201,7 @@
 		<volist name='list1' id='vo'>
 			<volist name='vo' id='v'>
 			<li class="mui-table-view-cell mui-media">
-				<a href="extension_content.html">
+				<a href="{:U('extension_content',array('uid'=>$v['uid']))}">
 					<span class="shijian">&yen;<b>1.00</b></span>
 					<img class="mui-media-object mui-pull-left corners"  <if condition="$v['img'] eq null"> src="__MUI__/images/headportrait.jpg" <else /> src="{$v['img']}" </if>>
 					<div class="mui-media-body">

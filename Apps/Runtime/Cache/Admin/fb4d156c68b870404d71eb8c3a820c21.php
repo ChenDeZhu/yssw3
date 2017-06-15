@@ -23,11 +23,13 @@
 </head>
 <body>
 	 
+<script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/ueditor.all.min.js"> </script>
 <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script type="text/javascript" charset="utf-8" src="/Public/Admin/Lib/ueditor1_4_3_3/lang/zh-cn/zh-cn.js"></script>
+
 
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 添加<?php echo ($name); ?> <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" id="btn-refresh"><i class="Hui-iconfont" id="btn-refresh">&#xe68f;</i></a></nav>
 
@@ -39,9 +41,7 @@
                 <span class="select-box">
                   <select class="select" size="1" name="uid" id="uid">
                     <option value="">--请选择用户--</option>
-                    
-                        <option value="1">我是第一个用户</option>
-                    
+                        <?php if(is_array($ulist)): $i = 0; $__LIST__ = $ulist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>"><?php echo ($vo["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                   </select>
                 </span>
             </div>
@@ -74,37 +74,16 @@
             </div>
         </div>
         </div>
-        <div class="row cl lunbo">
-		<label class="form-label col-xs-4 col-sm-3" style="height:100px; line-height: 140px"><span class="c-red">*</span>详情图：</label>
-		<div class="main-upload">
-            <div class="main-img">
-                <input class="input" type="file" name="lunbo[]" id="doc2" style="opacity:0; display:none;" onchange="javascript:setImagePreview(2);">
-                <label id="a2" for="doc2" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
-                <img id="preview2">
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>详情图(4张)：</label>
+            <div class="formControls col-xs-5 col-sm-6">
+                <button type="button" id="j_upload_img_btn" class="btn btn-primary radius">上传详情图</button>
+                <ul id="upload_img_wrap"></ul>
+                <textarea id="uploadEditor" style="display: none;"></textarea>
             </div>
         </div>
-        <div class="main-upload">
-            <div class="main-img">
-                <input class="input" type="file" name="lunbo[]" id="doc3" style="opacity:0; display:none;" onchange="javascript:setImagePreview(3);">
-                <label id="a3" for="doc3" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
-                <img id="preview3">
-            </div>
-        </div>
-        <div class="main-upload">
-            <div class="main-img">
-                <input class="input" type="file" name="lunbo[]" id="doc4" style="opacity:0; display:none;" onchange="javascript:setImagePreview(4);">
-                <label id="a4" for="doc4" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
-                <img id="preview4">
-            </div>
-        </div>
-        <div class="main-upload">
-            <div class="main-img">
-                <input class="input" type="file" name="lunbo[]" id="doc5" style="opacity:0; display:none;" onchange="javascript:setImagePreview(5);">
-                <label id="a5" for="doc5" class="upimg"><i class="Hui-iconfont">&#xe600;</i></label>
-                <img id="preview5">
-            </div>
-        </div>
-        </div>
+      
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>联系人：</label>
             <div class="formControls col-xs-5 col-sm-6">
@@ -150,7 +129,7 @@
         <div class="row cl">
           <label class="form-label col-xs-4 col-sm-3">详细内容：</label>
           <div class="formControls col-xs-5 col-sm-6">
-            <script id="editor" type="text/plain" style="width:800px;height:400px;"></script>
+          <textarea name="content" id='content'></textarea>
           </div>
         </div>
 		</div>
@@ -228,120 +207,58 @@ function check(){
 	return true;
 }
 </script>
-<script type="text/javascript" src="/Public/Admin/Lib/jquery/1.9.1/jquery.min.js"></script> 
+
 <script type="text/javascript" src="/Public/Admin/Lib/layer/2.1/layer.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.js"></script> 
 <script type="text/javascript" src="/Public/Admin/Js/H-ui.admin.js"></script> 
 <script type="text/javascript">
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-    var ue = UE.getEditor('editor');
-    function isFocus(e){
-        alert(UE.getEditor('editor').isFocus());
-        UE.dom.domUtils.preventDefault(e)
-    }
-    function setblur(e){
-        UE.getEditor('editor').blur();
-        UE.dom.domUtils.preventDefault(e)
-    }
-    function insertHtml() {
-        var value = prompt('插入html代码', '');
-        UE.getEditor('editor').execCommand('insertHtml', value)
-    }
-    function createEditor() {
-        enableBtn();
-        UE.getEditor('editor');
-    }
-    function getAllHtml() {
-        alert(UE.getEditor('editor').getAllHtml())
-    }
-    function getContent() {
-        var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getContent());
-        alert(arr.join("\n"));
-    }
-    function getPlainTxt() {
-        var arr = [];
-        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getPlainTxt());
-        alert(arr.join('\n'))
-    }
-    function setContent(isAppendTo) {
-        var arr = [];
-        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
-        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
-        alert(arr.join("\n"));
-    }
-    function setDisabled() {
-        UE.getEditor('editor').setDisabled('fullscreen');
-        disableBtn("enable");
-    }
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
+</script>
+<!-- 使用ue -->
+<script type="text/javascript">
 
-    function setEnabled() {
-        UE.getEditor('editor').setEnabled();
-        enableBtn();
-    }
+    // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
+ var uploadEditor = UE.getEditor("uploadEditor", {
+        isShow: false,
+        focus: false,
+        enableAutoSave: false,
+        autoSyncData: false,
+        autoFloatEnabled:false,
+        wordCount: false,
+        sourceEditor: null,
+        scaleEnabled:true,
+        toolbars: [["insertimage"]]
+    });
 
-    function getText() {
-        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-        var range = UE.getEditor('editor').selection.getRange();
-        range.select();
-        var txt = UE.getEditor('editor').selection.getText();
-        alert(txt)
-    }
+    // 监听多图上传和上传附件组件的插入动作
+ uploadEditor.ready(function () {
+        uploadEditor.addListener("beforeInsertImage", _beforeInsertImage);
+        
+    });
 
-    function getContentTxt() {
-        var arr = [];
-        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-        arr.push("编辑器的纯文本内容为：");
-        arr.push(UE.getEditor('editor').getContentTxt());
-        alert(arr.join("\n"));
-    }
-    function hasContent() {
-        var arr = [];
-        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-        arr.push("判断结果为：");
-        arr.push(UE.getEditor('editor').hasContents());
-        alert(arr.join("\n"));
-    }
-    function setFocus() {
-        UE.getEditor('editor').focus();
-    }
-    function deleteEditor() {
-        disableBtn();
-        UE.getEditor('editor').destroy();
-    }
-    function disableBtn(str) {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-            if (btn.id == str) {
-                UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-            } else {
-                btn.setAttribute("disabled", "true");
-            }
+    // 自定义按钮绑定触发多图上传和上传附件对话框事件
+ document.getElementById('j_upload_img_btn').onclick = function () {
+        var dialog = uploadEditor.getDialog("insertimage");
+        dialog.title = '多图上传';
+        dialog.render();
+        dialog.open();
+    };
+
+
+
+    // 多图上传动作
+ function _beforeInsertImage(t, result) {
+        var imageHtml = '';
+        for(var i in result){
+            imageHtml += '<li><img src="'+result[i].src+'" height="150"></li>';
+            imageHtml +='<input type="hidden" name="lunbo[]" value="'+result[i].src+'">';
         }
-    }
-    function enableBtn() {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-        }
+        document.getElementById('upload_img_wrap').innerHTML = imageHtml;
     }
 
-    function getLocalData () {
-        alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
-    }
 
-    function clearLocalData () {
-        UE.getEditor('editor').execCommand( "clearlocaldata" );
-        alert("已清空草稿箱")
-    }
 </script>
 
 

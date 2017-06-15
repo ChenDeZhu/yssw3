@@ -209,15 +209,19 @@
 		</style>
 	</head>
 	<body>
+
 		<!-- header class="mui-bar mui-bar-nav"></header -->
-		<div class="mui-content topws">
+		<div class="mui-content topws mui-scroll-wrapper" id="pullrefresh"> 
+			<div class="mui-scroll">
 			<div class="mui-slider carouselad" >
 				<div class="mui-slider-group mui-slider-loop">
-					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="__MUI__/images/LB-1.jpg"></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="__MUI__/images/LB-1.jpg"></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="__MUI__/images/LB-2.jpg"></a></div>
+					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="__MUI__/images/company.jpg"></a></div>
+					<volist name="img_info" id="vo">
+					<div class="mui-slider-item"><a href="#"><img src="{$vo['savepath']}"></a></div>
+					</volist>
+					<!-- <div class="mui-slider-item"><a href="#"><img src="__MUI__/images/LB-2.jpg"></a></div>
 					<div class="mui-slider-item"><a href="#"><img src="__MUI__/images/LB-3.jpg"></a></div>
-					<div class="mui-slider-item"><a href="#"><img src="__MUI__/images/LB-4.jpg"></a></div>
+					<div class="mui-slider-item"><a href="#"><img src="__MUI__/images/LB-4.jpg"></a></div> -->
 					<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="__MUI__/images/LB-1.jpg"></a>
 					</div>
 				</div>
@@ -227,7 +231,7 @@
 					<div class="mui-indicator"></div>
 					<div class="mui-indicator"></div>
 				</div>
-				<img class="logo" src="__MUI__/images/logo.png"></a>
+				<!-- <img class="logo" src="__MUI__/images/logo.png"></a> -->
 			</div>
 			<div class="notice">
 				<dl>
@@ -235,6 +239,7 @@
 					<dd class="marquee"><div>{$info['notice']}</div></dd>
 				</dl>
 			</div>
+			
 			<ul class="mui-table-view mui-table-view-chevron productlb topbk">
 			<volist name='list' id='vo'>
 				<li class="mui-table-view-cell mui-media">
@@ -255,6 +260,8 @@
 				</li>
 			</volist>
 			</ul>
+			
+		</div>
 		</div>
 		<div class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item  mui-active" href="{:U('index/index')}"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
@@ -267,15 +274,48 @@
 		<script>
             mui.init({
                 //mui js 代码
+                pullRefresh: {
+					container: '#pullrefresh',
+					
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
             });
+            var count = 0;
+            function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 103)); //参数为true代表没有更多数据了。
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					mui.post("",{
+							first:cells.length,
+							
+						},function(data){					
+						},'json'
+					);
+				
+					var title="下拉刷新";
+					var tname = "频道";
+					var name = "类别";
+					var date = "时间";
+					var src = "__MUI__/images/LB-1.jpg"
+					for (var i = cells.length, len = i + 2; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = '<a class="mui-navigate-right" href="{:U("Information/detail",array("id"=>'+1+'))}"><img class="mui-media-object mui-pull-left" src="'+src+'"><div class="mui-media-body">'+title+'<div class="parameter"><dl><dt>频道</dt><dd>'+tname+'</dd></dl><dl><dt>类别</dt><dd>'+name+'</dd></dl><dl><dt>日期</dt><dd>'+date+'</dd></dl></div></div></a>';
+						table.appendChild(li);
+					}
+				}, 1500);
+			}
             //测试代码
             mui('body').on('tap','a',function(){window.top.location.href=this.href;});
             //微信代码
-            // document.getElementById('home').addEventListener('tap', function() {window.location.href="index.html";});
-            // document.getElementById('nearby').addEventListener('tap', function() {window.location.href="near_task.html";});
-            // document.getElementById('sms').addEventListener('tap', function() {window.location.href="sms_list.html";});
-            // document.getElementById('my').addEventListener('tap', function() {window.location.href="my.html";});
+           
+            
 		</script>
+
 		<div style="display: none">统计代码</div>
 	</body>
 </html>

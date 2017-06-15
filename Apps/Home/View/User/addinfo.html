@@ -100,7 +100,7 @@
 				
 			</form>
 			<div class="mui-input-row" style="margin: 10px 5px;">
-					<textarea id="textarea" rows="5" placeholder="请输入信息详情" id="content"></textarea>
+					<textarea rows="5" placeholder="请输入信息详情" id="content"></textarea>
 				</div>
 				<div class="mui-button-row">
 					<button type="button" class="mui-btn mui-btn-primary" id="updatec">发布信息</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -135,7 +135,7 @@
         	postdate['mobile'] = mui('#mobile')[0].value;
         	postdate['price'] = mui('#price')[0].value;
         	postdate['address'] = mui('#address')[0].value;
-        	postdate['content'] = mui('#content').value;
+        	postdate['content'] = mui('#content')[0].value;
         	mui.post("{:U('addvip')}",postdate,function(res){
 					if(res==1){
 						before = 1;
