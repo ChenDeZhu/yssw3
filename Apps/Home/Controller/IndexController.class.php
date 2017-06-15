@@ -25,5 +25,26 @@ class IndexController extends BaseController{
 		$this->assign('list',$list);
 		$this->display();
 	}
-
+	public function upRefresh(){
+		$data = $_POST;
+		$first = $data['first'];
+		$last = $first+10;
+				$M = M('information');
+		$list = $M->alias('a')->join('__CATE__ b on b.cid = a.cid')
+		->field('a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime')
+		->limit($first,$last)->order('a.updatetime desc')->select();
+		foreach ($list as $k => $v) {
+			$list[$k]['tname'] = getTypeName($v['type']);
+			$list[$k]['date'] = date("Y-m-d",$v['updatetime']);
+			if(!$v['img']){
+				$list[$k]['img']="/public/home/template/images/nopic.png";
+			}
+		}
+		// var_dump($list);exit;
+		if($list){
+			$this->ajaxReturn(array('status'=>1,'data'=>$list));
+		}else{
+			$this->ajaxReturn(array('status'=>0));
+		}
+	}
 }

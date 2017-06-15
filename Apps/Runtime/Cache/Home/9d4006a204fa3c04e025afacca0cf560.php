@@ -85,29 +85,28 @@
 		<div class="type">
 			<ul>
 			<?php if(is_array($clist)): $i = 0; $__LIST__ = $clist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><a href="<?php echo U('Information/rentto',array('cid'=>$vo['cid']));?>" <?php if($cid == $vo['cid']): ?>class="no"<?php endif; ?>><li><?php echo ($vo["name"]); ?></li></a><?php endforeach; endif; else: echo "" ;endif; ?>
-
 			</ul>
 		</div>
 	</header>
-	<div class="mui-content topws">
-
-		<ul class="mui-table-view mui-table-view-chevron productlb">
-		<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
-				<span class="shijian">&yen; <b><?php echo ($vo["price"]); ?></b></span>
-				<a class="mui-navigate-right" href="<?php echo U('Information/detail',array('id'=>$vo['id']));?>">
-					<img class="mui-media-object mui-pull-left" <?php if($vo['img'] != null): ?>src="<?php echo ($vo['img']); ?>"<?php else: ?> src="/Public/Home/Template/images/p-5.jpg"<?php endif; ?>>
-					<div class="mui-media-body">
-						<?php echo ($vo["title"]); ?>
-						<div class="parameter">
-							<dl><dt>频道</dt><dd><?php echo ($vo["tname"]); ?></dd></dl>
-							<dl><dt>类别</dt><dd><?php echo ($vo["cname"]); ?></dd></dl>
-							<dl><dt>日期</dt><dd><?php echo (date("Y年m月d日",$vo["update"])); ?></dd></dl>
-						</div>
-					</div>
-				</a>
-			</li><?php endforeach; endif; else: echo "" ;endif; ?>
-			
-		</ul>
+	<div class="mui-content topws mui-scroll-wrapper" id="pullrefresh"> 
+		<div class="mui-scroll">
+				<ul class="mui-table-view mui-table-view-chevron productlb">
+				<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="mui-table-view-cell mui-media">
+						<span class="shijian">&yen; <b><?php echo ($vo["price"]); ?></b></span>
+						<a class="mui-navigate-right" href="<?php echo U('Information/detail',array('id'=>$vo['id']));?>">
+							<img class="mui-media-object mui-pull-left" <?php if($vo['img'] != null): ?>src="<?php echo ($vo['img']); ?>"<?php else: ?> src="/Public/Home/Template/images/p-5.jpg"<?php endif; ?>>
+							<div class="mui-media-body">
+								<?php echo ($vo["title"]); ?>
+								<div class="parameter">
+									<dl><dt>频道</dt><dd><?php echo ($vo["tname"]); ?></dd></dl>
+									<dl><dt>类别</dt><dd><?php echo ($vo["cname"]); ?></dd></dl>
+									<dl><dt>日期</dt><dd><?php echo (date("Y年m月d日",$vo["update"])); ?></dd></dl>
+								</div>
+							</div>
+						</a>
+					</li><?php endforeach; endif; else: echo "" ;endif; ?>
+				</ul>
+		</div>
 	</div>
 <div class="mui-bar mui-bar-tab">
 	<a class="mui-tab-item" href="<?php echo U('index/index');?>"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
@@ -120,7 +119,45 @@
 <script>
     mui.init({
         //mui js 代码
-    });
+        pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+    	});
+    var count = 0;
+    function pullupRefresh() {
+				setTimeout(function() {
+					 //参数为true代表没有更多数据了。
+					 mui('#pullrefresh').pullRefresh().endPullupToRefresh((count > 2));
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					mui.post("<?php echo U('information/upRefresh');?>",{
+							first:cells.length,
+							type:"rentto",
+						},function(res){
+							if(res['status'] ==1){
+								for (var i = 0;i < res['data'].length; i++) {
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cell';
+								id = res['data'][i]['id'];
+								var img = res['data'][i]['img'];
+								li.innerHTML = '<span class="shijian">&yen; <b>'+res['data'][i]['price']+'</b></span><a class="mui-navigate-right" href="/index.php/information/detail/id/'+id+'"><img class="mui-media-object mui-pull-left" src="'+res['data'][i]['img']+'"><div class="mui-media-body">'+res['data'][i]['title']+'<div class="parameter"><dl><dt>频道</dt><dd>'+res['data'][i]['tname']+'</dd></dl><dl><dt>类别</dt><dd>'+res['data'][i]['name']+'</dd></dl><dl><dt>日期</dt><dd>'+res['data'][i]['date']+'</dd></dl></div></div></a>';
+								table.appendChild(li);
+							}
+							}else{
+								count = 5;
+								mui.toast('没有信息啦');
+
+							}		
+						},'json'
+					);
+					
+					
+				}, 1000);
+			}
     //测试代码
     mui('body').on('tap','a',function(){window.top.location.href=this.href;});
     //微信代码

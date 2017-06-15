@@ -128,6 +128,37 @@ class InformationController extends BaseController{
 
 	}
 
-
+	//下拉刷新
+	public function upRefresh(){
+		$data = $_POST;
+		$first = $data['first'];
+		if($data['type'] == "rentto"){
+			$str = "(a.type = 4)or(a.type = 5)";
+		}else if($data['type'] == "personnel"){
+			$str = "(a.type = 0)or(a.type = 1)";
+		}else if($data['type'] == "supply"){
+			$str = "(a.type = 2)or(a.type = 3)";
+		}
+		$last = $first+10;
+		$M = M('information');
+		$list = $M->alias('a')->join('__CATE__ b on b.cid = a.cid')
+		->where("$str")
+		->field('a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime')
+		->limit($first,$last)->order('a.updatetime desc')->select();
+		foreach ($list as $k => $v) {
+			$list[$k]['tname'] = getTypeName($v['type']);
+			$list[$k]['date'] = date("Y-m-d",$v['updatetime']);
+			if(!$v['img']){
+				$list[$k]['img']="/public/home/template/images/nopic.png";
+			}
+		}
+		// var_dump($list);exit;
+		if($list){
+			$this->ajaxReturn(array('status'=>1,'data'=>$list));
+		}else{
+			$this->ajaxReturn(array('status'=>0));
+		}
+	}
+	
 
 }

@@ -90,8 +90,8 @@
 		</ul>
 	</div>
 </header>
-<div class="mui-content topws">
-
+<div class="mui-content topws mui-scroll-wrapper" id="pullrefresh"> 
+		<div class="mui-scroll">
 	<ul class="mui-table-view mui-table-view-chevron productlb">
 		<volist name="list" id='vo'>
 			<li class="mui-table-view-cell mui-media">
@@ -110,6 +110,7 @@
 			</li>
 		</volist>
 	</ul>
+	</div>
 </div>
 <div class="mui-bar mui-bar-tab">
 	<a class="mui-tab-item" href="{:U('index/index')}"><span class="mui-icon mui-icon-home"></span><span class="mui-tab-label">首页</span></a>
@@ -122,10 +123,49 @@
 <script>
     mui.init({
         //mui js 代码
-    });
+        pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+    	});
+    var count = 0;
+    function pullupRefresh() {
+				setTimeout(function() {
+					 //参数为true代表没有更多数据了。
+					 mui('#pullrefresh').pullRefresh().endPullupToRefresh((count > 2));
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					mui.post("{:U('information/upRefresh')}",{
+							first:cells.length,
+							type:"supply",
+						},function(res){
+							if(res['status'] ==1){
+								for (var i = 0;i < res['data'].length; i++) {
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cell';
+								id = res['data'][i]['id'];
+								
+								li.innerHTML = '<span class="shijian">&yen; <b>'+res['data'][i]['price']+'</b></span><a class="mui-navigate-right" href="/index.php/information/detail/id/'+id+'"><div class="mui-media-body">'+res['data'][i]['title']+'<div class="parameter"><dl><dt>频道</dt><dd>'+res['data'][i]['tname']+'</dd></dl><dl><dt>类别</dt><dd>'+res['data'][i]['name']+'</dd></dl><dl><dt>日期</dt><dd>'+res['data'][i]['date']+'</dd></dl></div></div></a>';
+								table.appendChild(li);
+							}
+							}else{
+								count = 5;
+								mui.toast('没有信息啦');
+
+							}		
+						},'json'
+					);
+					
+					
+				}, 1000);
+			}
     //测试代码
     mui('body').on('tap','a',function(){window.top.location.href=this.href;});
     //微信代码
+   
 </script>
 <div style="display: none">统计代码</div>
 </body>
