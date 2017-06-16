@@ -1,0 +1,1186 @@
+[ 2017-06-16T10:57:27+08:00 ] 127.0.0.1 /index.php/User/addinfo/type/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_cate` WHERE ( type=0 )  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 161 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 162 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 163 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 164 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 165 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:57:30+08:00 ] 127.0.0.1 /index.php/information/personnel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=0 or type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=0 or a.type=1 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:57:31+08:00 ] 127.0.0.1 /index.php/user/my.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `uid`,`name`,`img`,`reg_time` FROM `ys_user` WHERE ( tid=1 ) ORDER BY reg_time desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 192 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 193 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 194 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 195 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 196 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:57:32+08:00 ] 127.0.0.1 /index.php/information/rentto.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=4 or type=5 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=4 or a.type=5 ) ORDER BY a.updatetime desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:57:35+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 4)or(a.type = 5) ) ORDER BY a.updatetime desc LIMIT 3,13   [ RunTime:0.0010s ]
+
+[ 2017-06-16T10:57:43+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 4)or(a.type = 5) ) ORDER BY a.updatetime desc LIMIT 3,13   [ RunTime:0.0000s ]
+
+[ 2017-06-16T10:57:49+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0000s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:57:52+08:00 ] 127.0.0.1 /index.php/Index/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10,20   [ RunTime:0.0010s ]
+
+[ 2017-06-16T10:57:56+08:00 ] 127.0.0.1 /index.php/Index/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10,20   [ RunTime:0.0010s ]
+
+[ 2017-06-16T10:57:59+08:00 ] 127.0.0.1 /index.php/information/personnel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=0 or type=1 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=0 or a.type=1 ) ORDER BY a.updatetime desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-06-16T10:58:01+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 0)or(a.type = 1) ) ORDER BY a.updatetime desc LIMIT 7,17   [ RunTime:0.0010s ]
+
+[ 2017-06-16T10:58:25+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0000s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:58:25+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0010s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:58:28+08:00 ] 127.0.0.1 /index.php/Index/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10,20   [ RunTime:0.0010s ]
+
+[ 2017-06-16T10:58:29+08:00 ] 127.0.0.1 /index.php/information/rentto.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=4 or type=5 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=4 or a.type=5 ) ORDER BY a.updatetime desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:58:31+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 4)or(a.type = 5) ) ORDER BY a.updatetime desc LIMIT 3,13   [ RunTime:0.0000s ]
+
+[ 2017-06-16T10:58:36+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 4)or(a.type = 5) ) ORDER BY a.updatetime desc LIMIT 3,13   [ RunTime:0.0000s ]
+
+[ 2017-06-16T10:58:37+08:00 ] 127.0.0.1 /index.php/information/supply.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=2 or type=3 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=2 or a.type=3 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:58:40+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 2)or(a.type = 3) ) ORDER BY a.updatetime desc LIMIT 4,14   [ RunTime:0.0010s ]
+
+[ 2017-06-16T10:58:42+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 2)or(a.type = 3) ) ORDER BY a.updatetime desc LIMIT 4,14   [ RunTime:0.0000s ]
+
+[ 2017-06-16T10:58:43+08:00 ] 127.0.0.1 /index.php/information/personnel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=0 or type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=0 or a.type=1 ) ORDER BY a.updatetime desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:58:45+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 0)or(a.type = 1) ) ORDER BY a.updatetime desc LIMIT 7,17   [ RunTime:0.0000s ]
+
+[ 2017-06-16T10:58:47+08:00 ] 127.0.0.1 /index.php/information/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( (a.type = 0)or(a.type = 1) ) ORDER BY a.updatetime desc LIMIT 7,17   [ RunTime:0.0000s ]
+
+[ 2017-06-16T10:58:47+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0010s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:58:58+08:00 ] 127.0.0.1 /index.php/Information/detail/id/19.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: UPDATE `ys_information` SET `click`=click+1 WHERE ( id=19 ) [ RunTime:0.0010s ]
+SQL: SELECT * FROM `ys_information` WHERE `id` = 19 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `name` FROM `ys_cate` WHERE ( cid=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('13','14') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] date() expects parameter 2 to be long, string given D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 200 行.
+NOTIC: [8] Undefined index: tel D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 226 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:59:00+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0000s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:59:01+08:00 ] 127.0.0.1 /index.php/Information/detail/id/18.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: UPDATE `ys_information` SET `click`=click+1 WHERE ( id=18 ) [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_information` WHERE `id` = 18 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SELECT `name` FROM `ys_cate` WHERE ( cid=3 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] date() expects parameter 2 to be long, string given D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 200 行.
+NOTIC: [8] Undefined variable: img_info D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 218 行.
+NOTIC: [8] Undefined index: tel D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 226 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:59:04+08:00 ] 127.0.0.1 /index.php/information/personnel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=0 or type=1 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=0 or a.type=1 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:59:05+08:00 ] 127.0.0.1 /index.php/Information/detail/id/11.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: UPDATE `ys_information` SET `click`=click+1 WHERE ( id=11 ) [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_information` WHERE `id` = 11 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SELECT `name` FROM `ys_cate` WHERE ( cid=8 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] date() expects parameter 2 to be long, string given D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 200 行.
+NOTIC: [8] Undefined variable: img_info D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 218 行.
+NOTIC: [8] Undefined index: tel D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bcfab4612da2b1af8c3e4fb66050e60c.php 第 226 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:59:07+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0000s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:59:08+08:00 ] 127.0.0.1 /index.php/user/my.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `uid`,`name`,`img`,`reg_time` FROM `ys_user` WHERE ( tid=1 ) ORDER BY reg_time desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 192 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 193 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 194 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 195 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 196 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T10:59:09+08:00 ] 127.0.0.1 /index.php/information/rentto.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=4 or type=5 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=4 or a.type=5 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T10:59:10+08:00 ] 127.0.0.1 /index.php/user/my.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `uid`,`name`,`img`,`reg_time` FROM `ys_user` WHERE ( tid=1 ) ORDER BY reg_time desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 192 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 193 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 194 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 195 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 196 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:10:49+08:00 ] 127.0.0.1 /index.php/user/my.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `uid`,`name`,`img`,`reg_time` FROM `ys_user` WHERE ( tid=1 ) ORDER BY reg_time desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 192 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 193 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 194 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 195 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 196 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T11:10:50+08:00 ] 127.0.0.1 /index.php/user/my.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `uid`,`name`,`img`,`reg_time` FROM `ys_user` WHERE ( tid=1 ) ORDER BY reg_time desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 192 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 193 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 194 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 195 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 196 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T11:10:50+08:00 ] 127.0.0.1 /index.php/User/add_information.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T11:10:51+08:00 ] 127.0.0.1 /index.php/User/addinfo/type/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_cate` WHERE ( type=0 )  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 161 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 162 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 163 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 164 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\c85314de30fd96b6593a2330b0287a33.php 第 165 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:10:53+08:00 ] 127.0.0.1 /index.php/information/rentto.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=4 or type=5 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=4 or a.type=5 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T11:10:54+08:00 ] 127.0.0.1 /index.php/information/supply.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=2 or type=3 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=2 or a.type=3 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:10:54+08:00 ] 127.0.0.1 /index.php/information/personnel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=0 or type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=0 or a.type=1 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:10:55+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0010s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:10:56+08:00 ] 127.0.0.1 /index.php/information/personnel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=0 or type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=0 or a.type=1 ) ORDER BY a.updatetime desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:10:56+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_setting` [ RunTime:0.0010s ]
+SQL: SELECT `img_id`,`notice` FROM `ys_setting` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_images` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_images` WHERE `id` IN ('15','16','17','18') ORDER BY id asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-06-16T11:11:14+08:00 ] 127.0.0.1 /index.php/Index/upRefresh.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.id,a.title,a.type,a.price,b.name,a.img,a.updatetime FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  ORDER BY a.updatetime desc LIMIT 10,20   [ RunTime:0.0010s ]
+
+[ 2017-06-16T11:11:14+08:00 ] 127.0.0.1 /index.php/information/personnel.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=0 or type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0000s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=0 or a.type=1 ) ORDER BY a.updatetime desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\fe88d3486d6049aef8877d598cfd4ce7.php 第 88 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:11:14+08:00 ] 127.0.0.1 /index.php/information/supply.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0000s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=2 or type=3 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=2 or a.type=3 ) ORDER BY a.updatetime desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 87 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+NOTIC: [8] Use of undefined constant img - assumed 'img' D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\0c333875b0e2bb470a37176b27607b88.php 第 97 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:11:15+08:00 ] 127.0.0.1 /index.php/information/rentto.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SELECT `cid`,`name`,`pid` FROM `ys_cate` WHERE ( type=4 or type=5 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_cate` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ys_information` [ RunTime:0.0010s ]
+SQL: SELECT a.type,a.title,a.id,a.updatetime,a.price,b.name as cname,a.img FROM ys_information a INNER JOIN ys_cate b on b.cid = a.cid  WHERE ( a.type=4 or a.type=5 ) ORDER BY a.updatetime desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined variable: cid D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 87 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+NOTIC: [8] Undefined index: update D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\9d4006a204fa3c04e025afacca0cf560.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:11:15+08:00 ] 127.0.0.1 /index.php/user/my.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `uid`,`name`,`img`,`reg_time` FROM `ys_user` WHERE ( tid=1 ) ORDER BY reg_time desc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 192 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 193 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 194 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 195 行.
+NOTIC: [8] Undefined variable: signPackage D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\8e369810b78f00a5f8b93eb739adc605.php 第 196 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-16T11:11:16+08:00 ] 127.0.0.1 /index.php/User/promote.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ys_user` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `ys_user` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ys_user` WHERE `tid` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `uid`,`name`,`reg_time`,`img` FROM `ys_user` WHERE `tid` = 1 ORDER BY reg_time desc  [ RunTime:0.0000s ]
+SQL: SELECT a.uid,a.name,a.reg_time,a.img,b.name as tname FROM ys_user a INNER JOIN ys_user b on a.tid = b.uid   WHERE ( a.tid=6 ) ORDER BY a.reg_time desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ys_money_detail` [ RunTime:0.0000s ]
+SQL: SELECT SUM(money) AS tp_sum FROM `ys_money_detail` WHERE `uid` = 1 AND `type` = 3 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: citye D:\wamp64\www\yssw3\Apps\Runtime\Cache\Home\bf9764199faeb83693660e3762b5305b.php 第 166 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015600s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015600s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+

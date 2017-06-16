@@ -229,12 +229,53 @@
     });
     //测试代码
     mui('body').on('tap','a',function(){window.top.location.href=this.href;});
-    //微信代码
-    // document.getElementById('home').addEventListener('tap', function() {window.location.href="index.html";});
-    // document.getElementById('nearby').addEventListener('tap', function() {window.location.href="near_task.html";});
-    // document.getElementById('sms').addEventListener('tap', function() {window.location.href="sms_list.html";});
-    // document.getElementById('my').addEventListener('tap', function() {window.location.href="my.html";});
 </script>
 <div style="display: none">统计代码</div>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript">
+		 wx.config({
+	        url:'<?php echo $signPackage["url"];?>',
+	        appId: '<?php echo $signPackage["appId"];?>',
+	        timestamp:'<?php echo $signPackage["timestamp"];?>',
+	        nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	        signature: '<?php echo $signPackage["signature"];?>',
+	        jsApiList: [
+	            
+	            'onMenuShareTimeline',
+	            'onMenuShareAppMessage'
+	        ]
+	    });
+	//分享到个人
+	 	wx.ready(function () {
+	        var imgurl="http://www.jtys114.com__CSS__/timg2.jpg";
+	        
+	        wx.onMenuShareTimeline({
+	            title: '个人主页', // 分享标题
+	            imgUrl: imgurl, // 分享图标
+	            link:"http://www.quanxin8.com/index.php/Login/t_login/tuid/{$user.uid}",
+	            success: function () {
+	                mui.toast("分享成功");
+	            },
+	            cancel: function () {
+	                mui.toast("您取消了分享");
+	            }
+        });
+    //分享到朋友圈
+        wx.onMenuShareAppMessage({
+            title: '个人主页',
+            desc: '个人主页个人主页个人主页', // 分享标题
+            link:"http://www.quanxin8.com/index.php/Login/t_login/tuid/{$user.uid}",
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                mui.toast("分享成功");
+            },
+            cancel: function () {
+                mui.toast("您取消了分享");
+            }
+        });
+    });
+    	wx.error(function(res){
+    });
+</script>
 </body>
 </html>

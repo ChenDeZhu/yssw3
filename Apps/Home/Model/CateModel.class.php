@@ -4,7 +4,6 @@ use Think\Model;
 
 class CateModel extends Model{
 	static public $treeList = array();
-	
 	static public function tree($data,$pid = 0,$count = 1){
 		foreach ($data as $key => $value){
             if($value['pid']==$pid){
@@ -15,6 +14,5 @@ class CateModel extends Model{
             } 
         }
         return self::$treeList;
-
 	}
 }

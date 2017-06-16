@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+vendor('Pay.lib.JSSDK');
 class UserController extends BaseController{
 	static public $uid;
 	public function _initialize(){
@@ -181,6 +182,25 @@ class UserController extends BaseController{
 	public function addinfo(){
 		if(IS_POST){
 			$data= $_POST;
+			$getimg = new JSSDK("wx53630ec8fbb17ecb","3bbfec4499541a3499f30cf97bbd5b67");
+			
+			if($data['images']){
+				$I = M('images');
+				foreach ($data['images'] as $k => $v) {
+					if($k == 0){
+						//将第一张作为首页显示的图片
+						$data['img'] = $getimg->download($v);
+					}
+					$newdata['savepath']=$getimg->download($v);
+					$imgId[] = $I->add($newdata);
+				}
+				//拼接成字符串
+				$data['img_id'] =implode(',',$imgId);
+
+			}
+
+
+
 			$res = M('information')->add($data);
 			if($res){
 				$this->ajaxReturn(1);

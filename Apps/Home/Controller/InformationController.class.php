@@ -127,7 +127,6 @@ class InformationController extends BaseController{
 		$this->display(); 
 
 	}
-
 	//下拉刷新
 	public function upRefresh(){
 		$data = $_POST;
@@ -152,7 +151,7 @@ class InformationController extends BaseController{
 				$list[$k]['img']="/public/home/template/images/nopic.png";
 			}
 		}
-		// var_dump($list);exit;
+		
 		if($list){
 			$this->ajaxReturn(array('status'=>1,'data'=>$list));
 		}else{

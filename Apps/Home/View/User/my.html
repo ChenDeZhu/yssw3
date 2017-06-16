@@ -187,5 +187,53 @@
 	
 </script>
 <div style="display: none">统计代码</div>
+<!-- 微信分享 -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript">
+	 wx.config({
+        url:'<?php echo $signPackage["url"];?>',
+        appId: '<?php echo $signPackage["appId"];?>',
+        timestamp:'<?php echo $signPackage["timestamp"];?>',
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+        signature: '<?php echo $signPackage["signature"];?>',
+        jsApiList: [
+            
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage'
+        ]
+    });
+	//分享到个人
+	 	wx.ready(function () {
+	        var imgurl="http://www.jtys114.com__CSS__/timg2.jpg";
+	        wx.onMenuShareTimeline({
+	            title: '个人主页', // 分享标题
+	            imgUrl: imgurl, // 分享图标
+	            success: function () {
+	                mui.toast("分享成功");
+	            },
+	            cancel: function () {
+	                mui.toast("您取消了分享");
+	            }
+        });
+    //分享到朋友圈
+        wx.onMenuShareAppMessage({
+            title: '个人主页',
+            desc: '个人主页个人主页个人主页', // 分享标题
+            imgUrl: imgurl, // 分享图标
+            success: function () {
+                mui.toast("分享成功");
+            },
+            cancel: function () {
+                mui.toast("您取消了分享");
+            }
+        });
+    });
+	
+	
+    wx.error(function(res){
+    });
+</script>
+
+
 </body>
 </html>
